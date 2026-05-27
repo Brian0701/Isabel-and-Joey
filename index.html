@@ -6,7 +6,6 @@
 <title>Ogrimina &amp; Clemen's Wedding</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-/* ===== VARIABLES & RESET ===== */
 :root{
   --bg:#f0ebe3;--surface:#faf7f4;--border:#d9cfc4;
   --ink:#4a3728;--ink2:#5c3d2e;--muted:#7a6050;
@@ -16,19 +15,13 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
 img{max-width:100%;height:auto;}
-
-/* ===== DOT NAV ===== */
 .dot-nav{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:10px;}
 .dot-nav a{display:block;width:7px;height:7px;border-radius:50%;background:#c9bfb0;transition:all .3s;text-decoration:none;}
 .dot-nav a.active{background:var(--accent);transform:scale(1.5);}
 @media(max-width:480px){.dot-nav{right:6px;}}
-
-/* ===== MUSIC BTN ===== */
 .music-btn{position:fixed;bottom:20px;left:20px;z-index:500;background:var(--surface);border:1px solid var(--border);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(92,61,46,.1);}
 .music-btn:hover,.music-btn.playing{border-color:var(--accent);}
 @media(max-width:480px){.music-btn{width:38px;height:38px;bottom:14px;left:14px;}}
-
-/* ===== HERO ===== */
 .hero-photo-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
 .hero-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(240,235,227,.55) 0%,rgba(240,235,227,.75) 60%,rgba(240,235,227,.95) 100%);}
 .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:0;padding:0 16px;width:100%;}
@@ -40,8 +33,6 @@ img{max-width:100%;height:auto;}
 .countdown-unit{display:flex;align-items:baseline;gap:5px;}
 .countdown-num{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,5vw,28px);font-weight:300;color:var(--ink2);min-width:28px;text-align:right;}
 .countdown-label{font-size:clamp(9px,2vw,11px);letter-spacing:.08em;color:var(--faint);font-weight:300;}
-
-/* ===== SECTIONS ===== */
 .section{padding:clamp(48px,8vw,80px) clamp(16px,5vw,32px);max-width:700px;margin:0 auto;opacity:0;transform:translateY(36px);transition:opacity .65s ease,transform .65s ease;}
 .section.visible{opacity:1;transform:translateY(0);}
 .section-divider-wrap{display:flex;align-items:center;gap:16px;margin-bottom:36px;}
@@ -50,15 +41,11 @@ img{max-width:100%;height:auto;}
 .section-sep{width:60px;height:1px;background:var(--border);margin:0 auto;}
 .body-text{font-size:clamp(13px,3vw,15px);line-height:1.9;color:var(--muted);}
 .body-text em{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,4vw,20px);font-style:italic;color:var(--accent);display:block;margin-top:24px;}
-
-/* ===== COUPLE PHOTOS ===== */
 .couple-photos-row{display:flex;gap:clamp(16px,4vw,28px);justify-content:center;flex-wrap:wrap;margin-bottom:32px;}
 .couple-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;}
 .couple-photo{width:clamp(120px,22vw,180px);height:clamp(120px,22vw,180px);border-radius:50%;background:var(--surface);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .couple-photo img{width:100%;height:100%;object-fit:cover;}
 .couple-photo-name{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,3vw,16px);font-style:italic;color:var(--ink2);}
-
-/* ===== EVENTS ===== */
 .event-date-header{font-family:'Cormorant Garamond',serif;font-size:clamp(11px,2.5vw,13px);letter-spacing:.25em;text-transform:uppercase;color:var(--faint);text-align:center;margin-bottom:24px;}
 .event-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:clamp(16px,4vw,24px) clamp(16px,4vw,28px);margin-bottom:16px;transition:border-color .2s;}
 .event-card:hover{border-color:var(--accent);}
@@ -71,14 +58,10 @@ img{max-width:100%;height:auto;}
 .event-btn{flex:1;min-width:120px;padding:11px;background:var(--ink2);color:var(--bg);text-align:center;border-radius:6px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .2s;font-family:'Jost',sans-serif;}
 .event-btn:hover{background:var(--muted);}
 .event-btn-outline{background:transparent;border:1px solid var(--ink2);color:var(--ink2);}
-
-/* ===== TRAVEL ===== */
 .travel-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:clamp(16px,4vw,20px) clamp(16px,4vw,24px);text-align:center;}
 .travel-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
 .travel-name{font-size:clamp(14px,3vw,15px);font-weight:500;color:var(--ink2);margin-bottom:4px;}
 .travel-detail{font-size:clamp(12px,3vw,13px);color:var(--muted);line-height:1.7;}
-
-/* ===== REGISTRY ===== */
 .registry-intro{font-size:clamp(12px,3vw,13px);color:var(--muted);margin-bottom:24px;line-height:1.8;}
 .registry-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 @media(max-width:400px){.registry-grid{grid-template-columns:1fr;}}
@@ -86,8 +69,6 @@ img{max-width:100%;height:auto;}
 .registry-card:hover{border-color:var(--accent);transform:translateY(-2px);}
 .registry-store{font-size:clamp(11px,2.5vw,13px);letter-spacing:.15em;text-transform:uppercase;color:var(--ink2);font-weight:500;}
 .registry-sub{font-size:12px;color:var(--faint);margin-top:4px;}
-
-/* ===== WEDDING PARTY ===== */
 .party-group-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin:28px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border);}
 .party-group{display:flex;flex-wrap:wrap;gap:clamp(16px,4vw,28px);justify-content:flex-start;margin-bottom:8px;}
 .party-member{display:flex;flex-direction:column;align-items:center;text-align:center;width:clamp(100px,28vw,150px);}
@@ -95,23 +76,13 @@ img{max-width:100%;height:auto;}
 .party-photo img{width:100%;height:100%;object-fit:cover;}
 .party-name{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,3.5vw,17px);font-weight:400;letter-spacing:.06em;color:var(--ink2);margin-bottom:4px;line-height:1.3;}
 .party-role{font-size:clamp(10px,2.5vw,12px);letter-spacing:.12em;color:var(--faint);}
-
-/* ===== GALLERY ===== */
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
 @media(max-width:380px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
 .gallery-cell{aspect-ratio:1;background:var(--surface);border-radius:4px;border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.1em;color:var(--faint);}
 .gallery-cell img{width:100%;height:100%;object-fit:cover;}
-
-/* ===== VIDEO ===== */
-.video-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--border);margin-bottom:16px;}
-.video-wrap iframe,.video-wrap video{width:100%;display:block;aspect-ratio:16/9;border:none;}
-
-/* ===== FAQ ===== */
 .faq-item{border-bottom:1px solid var(--border);padding:18px 0;}
 .faq-q{font-size:clamp(13px,3vw,14px);font-weight:500;color:var(--ink2);margin-bottom:8px;}
 .faq-a{font-size:clamp(12px,3vw,13px);color:var(--muted);line-height:1.8;}
-
-/* ===== RSVP ===== */
 .rsvp-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:8px;}
 .rsvp-input{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:6px;background:var(--surface);font-family:'Jost',sans-serif;font-size:clamp(13px,3vw,14px);color:var(--ink2);outline:none;transition:border-color .2s;margin-bottom:20px;appearance:none;-webkit-appearance:none;}
 .rsvp-input:focus{border-color:var(--accent);}
@@ -125,8 +96,6 @@ img{max-width:100%;height:auto;}
 .rsvp-success{display:none;text-align:center;padding:48px 0;}
 .rsvp-success .check{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,8vw,48px);font-style:italic;color:var(--accent);}
 .rsvp-success p{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,24px);font-style:italic;color:var(--ink2);margin-top:12px;}
-
-/* ===== FOOTER ===== */
 footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spacing:.18em;color:var(--faint);border-top:1px solid var(--border);text-transform:uppercase;}
 
 /* =====================================================
@@ -141,137 +110,174 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
 #intro-overlay.hidden{display:none;}
 
 /* --- Envelope Stage --- */
-#envelope-stage{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:24px;padding:24px;
-}
-.env-hint{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(14px,4vw,17px);font-style:italic;
-  color:#7a6050;letter-spacing:.12em;
-  opacity:0;animation:fadeIn 1.2s 1.2s forwards;
-  text-align:center;
-}
+#envelope-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;}
+.env-hint{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,4vw,17px);font-style:italic;color:#7a6050;letter-spacing:.12em;opacity:0;animation:fadeIn 1.2s 1.2s forwards;text-align:center;}
 @keyframes fadeIn{to{opacity:1;}}
-#envelope-wrap{
-  cursor:pointer;
-  animation:floatEnv 3s ease-in-out infinite,fadeIn 1s .4s both;
-  transform-origin:center;
-  filter:drop-shadow(0 12px 28px rgba(92,61,46,.22));
-  -webkit-tap-highlight-color:transparent;
-}
-@keyframes floatEnv{
-  0%,100%{transform:translateY(0px) rotate(-1.5deg);}
-  50%{transform:translateY(-18px) rotate(1.5deg);}
-}
+#envelope-wrap{cursor:pointer;animation:floatEnv 3s ease-in-out infinite,fadeIn 1s .4s both;transform-origin:center;filter:drop-shadow(0 12px 28px rgba(92,61,46,.22));-webkit-tap-highlight-color:transparent;}
+@keyframes floatEnv{0%,100%{transform:translateY(0px) rotate(-1.5deg);}50%{transform:translateY(-18px) rotate(1.5deg);}}
 .env-svg{width:clamp(130px,40vw,200px);height:auto;}
 .env-flap{transform-origin:top center;transition:transform .5s ease;}
 
 /* --- Video Stage --- */
-#video-stage{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;
-  transition:opacity .8s;
-  background:#000;
-  padding:16px;
-}
+#video-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .8s;background:#000;padding:16px;}
 #video-stage.show{opacity:1;pointer-events:all;}
-#prenup-video{
-  width:min(90vw,840px);
-  aspect-ratio:16/9;
-  border-radius:8px;
-  background:#111;
-  outline:none;
-  box-shadow:0 24px 80px rgba(0,0,0,.6);
-  max-height:70vh;
-}
-.video-label{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(11px,3vw,14px);letter-spacing:.28em;
-  color:rgba(255,255,255,.55);
-  margin-top:16px;text-transform:uppercase;
-  text-align:center;
-}
-#skip-video-btn{
-  position:absolute;bottom:clamp(16px,4vw,36px);right:clamp(16px,4vw,48px);
-  font-family:'Jost',sans-serif;
-  font-size:clamp(10px,2.5vw,11px);letter-spacing:.2em;
-  color:rgba(255,255,255,.5);
-  cursor:pointer;border:1px solid rgba(255,255,255,.25);
-  background:transparent;padding:10px 20px;border-radius:20px;
-  text-transform:uppercase;transition:all .2s;
-  -webkit-tap-highlight-color:transparent;
-}
+#prenup-video{width:min(90vw,840px);aspect-ratio:16/9;border-radius:8px;background:#111;outline:none;box-shadow:0 24px 80px rgba(0,0,0,.6);max-height:70vh;}
+.video-label{font-family:'Cormorant Garamond',serif;font-size:clamp(11px,3vw,14px);letter-spacing:.28em;color:rgba(255,255,255,.55);margin-top:16px;text-transform:uppercase;text-align:center;}
+#skip-video-btn{position:absolute;bottom:clamp(16px,4vw,36px);right:clamp(16px,4vw,48px);font-family:'Jost',sans-serif;font-size:clamp(10px,2.5vw,11px);letter-spacing:.2em;color:rgba(255,255,255,.5);cursor:pointer;border:1px solid rgba(255,255,255,.25);background:transparent;padding:10px 20px;border-radius:20px;text-transform:uppercase;transition:all .2s;-webkit-tap-highlight-color:transparent;}
 #skip-video-btn:hover,#skip-video-btn:active{color:#fff;border-color:rgba(255,255,255,.6);}
 
-/* --- Curtain Stage --- */
-#curtain-stage{
+/* =====================================================
+   TWIG STAGE — Filipino Garden Party
+   ===================================================== */
+#twig-stage{
   position:absolute;inset:0;
-  display:flex;pointer-events:none;
-  opacity:0;transition:opacity .3s;
+  display:flex;
+  pointer-events:none;
+  opacity:0;transition:opacity .4s;
   overflow:hidden;
 }
-#curtain-stage.show{opacity:1;pointer-events:all;}
-.curtain-panel{
-  position:absolute;top:0;bottom:0;width:50%;
-  background:linear-gradient(135deg,#3a2318 0%,#5c3d2e 30%,#7a5243 55%,#5c3d2e 80%,#3a2318 100%);
-  transition:transform 1.8s cubic-bezier(.76,0,.24,1);
+#twig-stage.show{opacity:1;pointer-events:all;}
+
+/* Panel shell */
+.twig-panel{
+  position:absolute;top:0;bottom:0;width:51%;
+  background:linear-gradient(160deg,#f5e9d6 0%,#eddfc8 30%,#e6d6bc 60%,#eedcca 100%);
+  transition:transform 2.2s cubic-bezier(.77,0,.18,1);
   overflow:hidden;
+  will-change:transform;
 }
-.curtain-left{left:0;transform:translateX(0);}
-.curtain-right{right:0;transform:translateX(0);}
-.curtain-panel.open-left{transform:translateX(-100%);}
-.curtain-panel.open-right{transform:translateX(100%);}
-.curtain-folds{
+.twig-left { left:0;  transform:translateX(0); }
+.twig-right{ right:0; transform:translateX(0); }
+.twig-left.open-left   { transform:translateX(-100%); }
+.twig-right.open-right { transform:translateX(100%); }
+
+/* Parchment grain texture */
+.twig-panel::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+  pointer-events:none;z-index:1;
+  opacity:.5;
+}
+
+/* The SVG sits above the texture */
+.branches-svg{
   position:absolute;inset:0;
-  background:repeating-linear-gradient(
-    90deg,
-    transparent 0px,rgba(0,0,0,.12) 3px,
-    transparent 6px,rgba(255,255,255,.04) 12px,
-    transparent 18px,rgba(0,0,0,.08) 24px,
-    transparent 30px
-  );
+  width:100%;height:100%;
+  z-index:2;
+  overflow:visible;
 }
-.curtain-sheen{
+/* Mirror for right panel */
+.twig-right .branches-svg{
+  transform:scaleX(-1);
+  transform-origin:50% 50%;
+}
+
+/* Leaf sway — applied to every <g class="lf"> in the SVG */
+.lf{
+  animation:lfSway 3.4s ease-in-out infinite;
+  transform-box:fill-box;
+  transform-origin:100% 50%;
+}
+.lf.s1{animation-duration:2.8s;animation-delay:-0.7s;}
+.lf.s2{animation-duration:3.8s;animation-delay:-1.4s;}
+.lf.s3{animation-duration:4.2s;animation-delay:-0.3s;}
+.lf.s4{animation-duration:3.1s;animation-delay:-2.1s;}
+.lf.s5{animation-duration:2.6s;animation-delay:-1.0s;}
+.lf.s6{animation-duration:4.6s;animation-delay:-0.5s;}
+.lf.s7{animation-duration:3.5s;animation-delay:-1.8s;}
+.lf.s8{animation-duration:2.9s;animation-delay:-2.6s;}
+@keyframes lfSway{
+  0%,100%{transform:rotate(0deg);}
+  30%    {transform:rotate(6deg);}
+  65%    {transform:rotate(-5deg);}
+}
+
+/* Hanging leaf droops MORE */
+.lf-hang{
+  animation:lfHang 4s ease-in-out infinite;
+  transform-box:fill-box;
+  transform-origin:50% 0%;
+}
+.lf-hang.s1{animation-duration:3.6s;animation-delay:-0.8s;}
+.lf-hang.s2{animation-duration:4.4s;animation-delay:-1.6s;}
+.lf-hang.s3{animation-duration:3.1s;animation-delay:-0.4s;}
+@keyframes lfHang{
+  0%,100%{transform:rotate(0deg);}
+  40%    {transform:rotate(8deg);}
+  70%    {transform:rotate(-7deg);}
+}
+
+/* Gentle whole-panel breeze effect via the inner SVG */
+.branches-svg{
+  animation:panelBreeze 7s ease-in-out infinite alternate;
+}
+@keyframes panelBreeze{
+  0%  {transform:translateX(0px);}
+  100%{transform:translateX(-4px);}
+}
+.twig-right .branches-svg{
+  animation:panelBreezeR 7s ease-in-out infinite alternate;
+}
+@keyframes panelBreezeR{
+  0%  {transform:scaleX(-1) translateX(0px);}
+  100%{transform:scaleX(-1) translateX(-4px);}
+}
+
+/* Edge vignette */
+.twig-edge{
+  position:absolute;top:0;bottom:0;width:40px;z-index:3;pointer-events:none;
+}
+.twig-left  .twig-edge{right:0;background:linear-gradient(to right,transparent,rgba(107,71,38,.12));}
+.twig-right .twig-edge{left:0; background:linear-gradient(to left, transparent,rgba(107,71,38,.12));}
+
+/* ---- Falling scatter leaves during reveal ---- */
+#scatter-leaves{
   position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(255,255,255,.07) 0%,transparent 40%,rgba(0,0,0,.15) 100%);
+  pointer-events:none;z-index:10;
 }
-.curtain-right .curtain-sheen{
-  background:linear-gradient(90deg,rgba(0,0,0,.15) 0%,transparent 60%,rgba(255,255,255,.07) 100%);
+.s-leaf{
+  position:absolute;
+  border-radius:50% 50% 50% 0 / 60% 60% 40% 40%;
+  opacity:0;
+  pointer-events:none;
 }
-#curtain-light{
+#twig-stage.scattering .s-leaf{
+  animation:scatterFall var(--dur,2.4s) var(--delay,0s) ease-in forwards;
+}
+@keyframes scatterFall{
+  0%  {opacity:0; transform:translate(0,0) rotate(0deg) scale(1);}
+  8%  {opacity:1;}
+  85% {opacity:.6;}
+  100%{opacity:0; transform:translate(var(--tx,30px),320px) rotate(var(--rot,180deg)) scale(.6);}
+}
+
+/* Centre seam */
+#twig-seam{
+  position:absolute;top:0;bottom:0;left:50%;
+  width:2px;transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(107,71,38,.20) 0%,rgba(107,71,38,.10) 50%,rgba(107,71,38,.18) 100%);
+  pointer-events:none;z-index:5;
+  transition:opacity .5s .3s;
+}
+
+/* Warm dappled light at centre seam */
+#twig-light{
   position:absolute;top:0;left:50%;
   transform:translateX(-50%) scaleX(0);
-  width:clamp(60px,15vw,120px);height:100%;
-  background:radial-gradient(ellipse 60px 200% at 50% 10%,
-    rgba(255,248,230,.9) 0%,rgba(255,240,210,.35) 40%,transparent 100%);
+  width:clamp(60px,14vw,110px);height:100%;
+  background:radial-gradient(ellipse 60px 200% at 50% 8%,
+    rgba(255,245,210,.80) 0%,rgba(255,238,190,.25) 45%,transparent 100%);
   pointer-events:none;
-  transition:transform 1.6s 1.4s cubic-bezier(.22,1,.36,1),opacity 1s 1.4s;
-  opacity:0;z-index:2;
+  transition:transform 2s 1.4s cubic-bezier(.22,1,.36,1),opacity 1.5s 1.4s;
+  opacity:0;z-index:4;
 }
-#curtain-stage.light-on #curtain-light{
-  transform:translateX(-50%) scaleX(1);opacity:1;
-}
-.light-particle{
-  position:absolute;border-radius:50%;
-  background:rgba(255,248,230,.8);
-  animation:floatParticle linear infinite;
-  pointer-events:none;
-}
-@keyframes floatParticle{
-  0%{transform:translateY(100vh) scale(0);opacity:0;}
-  10%{opacity:1;}90%{opacity:1;}
-  100%{transform:translateY(-20px) scale(1);opacity:0;}
-}
+#twig-stage.light-on #twig-light{transform:translateX(-50%) scaleX(1);opacity:1;}
 </style>
 </head>
 <body>
 
-<!-- NAV + MUSIC (hidden until intro ends) -->
 <nav class="dot-nav" id="dotNav" style="opacity:0;transition:opacity 1s;">
   <a href="#hero"></a><a href="#welcome"></a><a href="#schedule"></a><a href="#travel"></a>
   <a href="#registry"></a><a href="#party"></a><a href="#gallery"></a><a href="#faqs"></a><a href="#rsvp"></a>
@@ -281,12 +287,10 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
 </div>
 <audio id="bgMusic" loop></audio>
 
-<!-- ============================================================
-     INTRO OVERLAY
-     ============================================================ -->
+<!-- ============================================================  INTRO  -->
 <div id="intro-overlay">
 
-  <!-- STAGE 1: Floating Envelope -->
+  <!-- STAGE 1: Envelope -->
   <div id="envelope-stage">
     <div id="envelope-wrap" onclick="openEnvelope()">
       <svg class="env-svg" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
@@ -295,11 +299,11 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
         <path d="M4 40 L110 110 L4 156Z" fill="#e8ddd0"/>
         <path d="M216 40 L110 110 L216 156Z" fill="#ede3d6"/>
         <circle cx="110" cy="120" r="16" fill="#8b6555" opacity=".9"/>
-        <text x="110" y="125" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" fill="#faf7f2" font-style="italic">I&amp;J</text>
+        <text x="110" y="125" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" fill="#faf7f2" font-style="italic">O&amp;C</text>
         <path class="env-flap" d="M4 40 L110 105 L216 40Z" fill="#f5efe6" stroke="#c9b99a" stroke-width="2" stroke-linejoin="round"/>
-        <path class="env-flap" d="M4 40 L110 105 L216 40Z" fill="url(#flapGrad)" opacity=".4"/>
+        <path class="env-flap" d="M4 40 L110 105 L216 40Z" fill="url(#fg)" opacity=".4"/>
         <defs>
-          <linearGradient id="flapGrad" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stop-color="#fff" stop-opacity=".6"/>
             <stop offset="100%" stop-color="#8b6555" stop-opacity=".1"/>
           </linearGradient>
@@ -311,43 +315,45 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
     <div class="env-hint">Click to open your invitation ✉</div>
   </div>
 
-  <!-- STAGE 2: Prenup Video -->
+  <!-- STAGE 2: Video -->
   <div id="video-stage">
     <video id="prenup-video" autoplay playsinline controls>
-      <!-- Replace src="" with your actual prenup video URL -->
       <source src="" type="video/mp4"/>
-      Your browser does not support video playback.
     </video>
-    <div class="video-label">Isabel &amp; Joey · Prenup</div>
+    <div class="video-label">Ogrimina &amp; Clemen · Prenup</div>
     <button id="skip-video-btn" onclick="skipToReveal()">Skip →</button>
   </div>
 
-  <!-- STAGE 3: Curtain Reveal -->
-  <div id="curtain-stage">
-    <div class="curtain-panel curtain-left">
-      <div class="curtain-folds"></div>
-      <div class="curtain-sheen"></div>
+  <!-- STAGE 3: Twig & Dried Leaf Reveal -->
+  <div id="twig-stage">
+
+    <!-- LEFT panel -->
+    <div class="twig-panel twig-left" id="twigLeft">
+      <!-- SVG injected by JS -->
+      <div class="twig-edge"></div>
     </div>
-    <div class="curtain-panel curtain-right">
-      <div class="curtain-folds"></div>
-      <div class="curtain-sheen"></div>
+
+    <!-- RIGHT panel (SVG mirrors via CSS scaleX) -->
+    <div class="twig-panel twig-right" id="twigRight">
+      <div class="twig-edge"></div>
     </div>
-    <div id="curtain-light">
-      <div class="light-particle" style="width:3px;height:3px;left:45%;animation-duration:4s;animation-delay:0s;"></div>
-      <div class="light-particle" style="width:2px;height:2px;left:55%;animation-duration:5.5s;animation-delay:1s;"></div>
-      <div class="light-particle" style="width:4px;height:4px;left:35%;animation-duration:3.8s;animation-delay:2.1s;"></div>
-      <div class="light-particle" style="width:2px;height:2px;left:65%;animation-duration:4.7s;animation-delay:.5s;"></div>
-      <div class="light-particle" style="width:3px;height:3px;left:50%;animation-duration:6s;animation-delay:1.7s;"></div>
-    </div>
+
+    <!-- Scatter leaves container -->
+    <div id="scatter-leaves"></div>
+
+    <!-- Centre seam -->
+    <div id="twig-seam"></div>
+
+    <!-- Warm light -->
+    <div id="twig-light"></div>
+
   </div>
 
 </div><!-- /#intro-overlay -->
 
-<!-- ============================================================
-     LANDING PAGE
-     ============================================================ -->
+<!-- ============================================================  PAGE  -->
 <div id="hero" style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden;">
-  <div class="hero-photo-bg" style="background-image: url('YOUR_PHOTO_URL_HERE');"></div>
+  <div class="hero-photo-bg" style="background-image:url('YOUR_PHOTO_URL_HERE');"></div>
   <div class="hero-photo-overlay"></div>
   <div class="hero-content">
     <div class="couple-names">Ogrimina <span class="ampersand">&amp;</span> Clemen</div>
@@ -366,23 +372,17 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
   <div class="section-divider-wrap"><div class="section-title">Welcome</div><div class="section-line"></div></div>
   <div class="couple-photos-row">
     <div class="couple-photo-wrap">
-      <div class="couple-photo" style="cursor:default;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-      </div>
+      <div class="couple-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
       <div class="couple-photo-name">Ogrimina</div>
     </div>
     <div class="couple-photo-wrap">
-      <div class="couple-photo" style="cursor:default;">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-      </div>
+      <div class="couple-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
       <div class="couple-photo-name">Clemen</div>
     </div>
   </div>
   <p class="body-text"><span>We are so grateful to share this beautiful milestone with the people we love most. We hope you will join us in celebrating our union surrounded by joy, laughter, and love.</span><br><br><span>Please scroll through to find all the details about our special day — from schedule and travel tips to registry and RSVPs.</span><em>"For all the days along the way."</em></p>
 </section>
-
 <div class="section-sep"></div>
-
 <section id="schedule" class="section">
   <div class="section-divider-wrap"><div class="section-title">Schedule</div><div class="section-line"></div></div>
   <div class="event-date-header">Saturday, July 18, 2026</div>
@@ -399,9 +399,7 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
     <div class="event-btn-row"><a class="event-btn" href="https://maps.google.com/?q=3+Mount+Everest+Avenue,+Golden+Hills+Subdivision,+Antipolo,+Rizal" target="_blank">Map</a><a class="event-btn event-btn-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ogrimina+%26+Clemen+Wedding+Reception&location=3%20Mount%20Everest%20Avenue%2C%20Golden%20Hills%20Subdivision%2C%20Antipolo%2C%20Rizal%201870%2C%20Philippines" target="_blank">Add to Calendar</a></div>
   </div>
 </section>
-
 <div class="section-sep"></div>
-
 <section id="travel" class="section">
   <div class="section-divider-wrap"><div class="section-title">Travel</div><div class="section-line"></div></div>
   <div class="travel-card">
@@ -411,9 +409,7 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
     <div class="event-btn-row" style="justify-content:center;"><a class="event-btn" href="https://maps.google.com/?q=Ponderosa+Heights+Lt1+Blk+5+Antipolo+Calabarzon+1870+Philippines" target="_blank" style="max-width:200px;">View on Map</a></div>
   </div>
 </section>
-
 <div class="section-sep"></div>
-
 <section id="registry" class="section">
   <div class="section-divider-wrap"><div class="section-title">Registry</div><div class="section-line"></div></div>
   <p class="registry-intro">Your presence is the greatest gift of all. But if you would like to give, we have registered at a few of our favorite places.</p>
@@ -424,36 +420,19 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
     <div class="registry-card"><div class="registry-store">Cash Fund</div><div class="registry-sub">Honeymoon &amp; Beyond</div></div>
   </div>
 </section>
-
 <div class="section-sep"></div>
-
 <section id="party" class="section">
   <div class="section-divider-wrap"><div class="section-title">Wedding Party</div><div class="section-line"></div></div>
-
   <div class="party-group-label">The Couple</div>
   <div class="party-group">
-    <div class="party-member">
-      <div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-      <div class="party-name">Maria Isabel Ogrimina</div><div class="party-role">Bride</div>
-    </div>
-    <div class="party-member">
-      <div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-      <div class="party-name">Joey Clemen</div><div class="party-role">Groom</div>
-    </div>
+    <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Maria Isabel Ogrimina</div><div class="party-role">Bride</div></div>
+    <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Joey Clemen</div><div class="party-role">Groom</div></div>
   </div>
-
   <div class="party-group-label">Principal Sponsors</div>
   <div class="party-group">
-    <div class="party-member">
-      <div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-      <div class="party-name">Freya Naglak</div><div class="party-role">Matron of Honor</div>
-    </div>
-    <div class="party-member">
-      <div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
-      <div class="party-name">Aljun Welba</div><div class="party-role">Best Man</div>
-    </div>
+    <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Freya Naglak</div><div class="party-role">Matron of Honor</div></div>
+    <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Aljun Welba</div><div class="party-role">Best Man</div></div>
   </div>
-
   <div class="party-group-label">Bridesmaids</div>
   <div class="party-group">
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Maria Andrea Ogrimina</div><div class="party-role">Bridesmaid</div></div>
@@ -462,36 +441,29 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Suchi Taruballes</div><div class="party-role">Bridesmaid</div></div>
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Renilyn Dayao</div><div class="party-role">Bridesmaid</div></div>
   </div>
-
   <div class="party-group-label">Little Ones</div>
   <div class="party-group">
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Isla Kiselle Taruballes</div><div class="party-role">Flower Girl</div></div>
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Aaliyah Joelene Labrador</div><div class="party-role">Flower Girl</div></div>
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Kristofer Clemen</div><div class="party-role">Ring Bearer</div></div>
   </div>
-
   <div class="party-group-label">Parents of the Bride</div>
   <div class="party-group">
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Fredilyn Ogrimina</div><div class="party-role">Mother of the Bride</div></div>
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Sonny Ogrimina</div><div class="party-role">Father of the Bride</div></div>
   </div>
-
   <div class="party-group-label">Parents of the Groom</div>
   <div class="party-group">
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Delia Clemen</div><div class="party-role">Mother of the Groom</div></div>
     <div class="party-member"><div class="party-photo" style="cursor:default;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.35"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><div class="party-name">Ambrosio Clemen</div><div class="party-role">Father of the Groom</div></div>
   </div>
 </section>
-
 <div class="section-sep"></div>
-
 <section id="gallery" class="section">
   <div class="section-divider-wrap"><div class="section-title">Gallery</div><div class="section-line"></div></div>
   <div class="gallery-grid"><div class="gallery-cell" style="grid-column:1/-1;aspect-ratio:unset;padding:32px;font-size:13px;">Photos coming soon.</div></div>
 </section>
-
 <div class="section-sep"></div>
-
 <section id="faqs" class="section">
   <div class="section-divider-wrap"><div class="section-title">FAQs</div><div class="section-line"></div></div>
   <div class="faq-item"><div class="faq-q">What is the dress code?</div><div class="faq-a">Formal attire. Ladies are encouraged to wear blush, sage, or ivory. Gentlemen in barong tagalog or suit.</div></div>
@@ -499,9 +471,7 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
   <div class="faq-item"><div class="faq-q">When is the RSVP deadline?</div><div class="faq-a">Please RSVP by May 30, 2026 so we can confirm final headcount with our caterer.</div></div>
   <div class="faq-item"><div class="faq-q">Can I take photos during the ceremony?</div><div class="faq-a">We are having an unplugged ceremony — please keep phones away during the Mass. The reception is fully photo-friendly!</div></div>
 </section>
-
 <div class="section-sep"></div>
-
 <section id="rsvp" class="section">
   <div class="section-divider-wrap"><div class="section-title">RSVP</div><div class="section-line"></div></div>
   <div id="rsvpForm" style="max-width:520px;">
@@ -524,7 +494,6 @@ footer{text-align:center;padding:clamp(24px,5vw,36px);font-size:11px;letter-spac
     <div class="check">Thank you</div><p>Your RSVP has been received.</p>
   </div>
 </section>
-
 <footer>Ogrimina &amp; Clemen &middot; July 18, 2026</footer>
 
 <script>
@@ -540,7 +509,7 @@ function updateCountdown(){
 }
 updateCountdown();setInterval(updateCountdown,1000);
 
-/* ===== DOT NAV + SCROLL OBSERVER ===== */
+/* ===== DOT NAV ===== */
 const sids=['hero','welcome','schedule','travel','registry','party','gallery','faqs','rsvp'];
 const dots=document.querySelectorAll('.dot-nav a');
 const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:.12});
@@ -554,11 +523,8 @@ function toggleMusic(){
   if(!a.src&&!a.querySelector('source').src)return;
   a.volume=.1;
   const btn=document.getElementById('musicBtn'),ic=document.getElementById('musicIcon');
-  if(a.paused){
-    a.play().then(()=>{btn.classList.add('playing');ic.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';}).catch(()=>{});
-  }else{
-    a.pause();btn.classList.remove('playing');ic.innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
-  }
+  if(a.paused){a.play().then(()=>{btn.classList.add('playing');ic.innerHTML='<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';}).catch(()=>{});}
+  else{a.pause();btn.classList.remove('playing');ic.innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';}
 }
 
 /* ===== RSVP ===== */
@@ -572,43 +538,345 @@ function submitRsvp(){
   document.getElementById('rsvpSuccess').style.display='block';
 }
 
+/* =================================================================
+   TWIG SVG BUILDER
+   Generates a dense botanical illustration: trunk on the inner edge,
+   branches extending outward, dried leaves swaying in a garden breeze.
+   ================================================================= */
+(function buildTwigs(){
+  const ns='http://www.w3.org/2000/svg';
+
+  /* Palette — dried tropical leaves, narra-brown twigs */
+  const LC=['#c8944a','#b87830','#d4a850','#9c6428','#c4a048',
+            '#8a8348','#7a6f38','#d4906a','#a06830','#be9050',
+            '#b06020','#cc9840','#906030','#5a7040'];
+  const TC=['#6b4624','#7a5028','#8b6030','#9a7038','#6e3e1c'];
+
+  /* Leaf shape factory: returns a <path> element */
+  function mkLeaf(cx,cy,rx,ry,rot,col,swayClass,opacity){
+    const g=document.createElementNS(ns,'g');
+    g.setAttribute('class','lf '+swayClass);
+    g.setAttribute('transform',`translate(${cx},${cy}) rotate(${rot})`);
+    /* Teardrop leaf: oval with pointed tip */
+    const p=document.createElementNS(ns,'path');
+    const halfW=rx, halfH=ry;
+    p.setAttribute('d',
+      `M 0,0 C ${halfW*0.5},${-halfH*1.1} ${halfW},${-halfH*0.5} ${halfW},0
+             C ${halfW},${halfH*0.5} ${halfW*0.5},${halfH*1.1} 0,0 Z`);
+    p.setAttribute('fill',col);
+    p.setAttribute('opacity',opacity||0.85);
+    g.appendChild(p);
+    /* Centre vein */
+    const vein=document.createElementNS(ns,'line');
+    vein.setAttribute('x1','0');vein.setAttribute('y1','0');
+    vein.setAttribute('x2',String(halfW));vein.setAttribute('y2','0');
+    vein.setAttribute('stroke','rgba(0,0,0,0.12)');
+    vein.setAttribute('stroke-width','0.6');
+    g.appendChild(vein);
+    return g;
+  }
+
+  /* Hanging leaf (droops downward) */
+  function mkHangLeaf(cx,cy,rx,ry,rot,col,swayClass,opacity){
+    const g=document.createElementNS(ns,'g');
+    g.setAttribute('class','lf-hang '+swayClass);
+    g.setAttribute('transform',`translate(${cx},${cy}) rotate(${rot})`);
+    const p=document.createElementNS(ns,'path');
+    p.setAttribute('d',
+      `M 0,0 C ${rx*0.5},${ry*1.1} ${rx},${ry*0.5} ${rx},0
+             C ${rx},${-ry*0.5} ${rx*0.5},${-ry*1.1} 0,0 Z`);
+    p.setAttribute('fill',col);
+    p.setAttribute('opacity',opacity||0.78);
+    g.appendChild(p);
+    return g;
+  }
+
+  /* Twig stroke */
+  function mkTwig(d,w,col){
+    const p=document.createElementNS(ns,'path');
+    p.setAttribute('d',d);
+    p.setAttribute('stroke',col||TC[0]);
+    p.setAttribute('stroke-width',String(w||1.2));
+    p.setAttribute('fill','none');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('stroke-linejoin','round');
+    return p;
+  }
+
+  /* Small dried-flower bud */
+  function mkBud(cx,cy,r,col){
+    const g=document.createElementNS(ns,'g');
+    /* petals */
+    for(let i=0;i<5;i++){
+      const ang=(i/5)*Math.PI*2;
+      const px=cx+Math.cos(ang)*r*1.8, py=cy+Math.sin(ang)*r*1.8;
+      const el=document.createElementNS(ns,'ellipse');
+      el.setAttribute('cx',String((cx+px)/2));
+      el.setAttribute('cy',String((cy+py)/2));
+      el.setAttribute('rx',String(r*0.9));
+      el.setAttribute('ry',String(r*0.5));
+      el.setAttribute('transform',`rotate(${(ang*180/Math.PI)+90},${(cx+px)/2},${(cy+py)/2})`);
+      el.setAttribute('fill','#e8c870');
+      el.setAttribute('opacity','0.72');
+      g.appendChild(el);
+    }
+    const c=document.createElementNS(ns,'circle');
+    c.setAttribute('cx',String(cx));c.setAttribute('cy',String(cy));
+    c.setAttribute('r',String(r));
+    c.setAttribute('fill','#d4a040');c.setAttribute('opacity','0.82');
+    g.appendChild(c);
+    return g;
+  }
+
+  /* Sampaguita-style tiny flower */
+  function mkFlower(cx,cy){
+    const g=document.createElementNS(ns,'g');
+    const cols=['#f5efe0','#f0e8d0','#ece0c8'];
+    for(let i=0;i<5;i++){
+      const ang=(i/5)*Math.PI*2;
+      const el=document.createElementNS(ns,'ellipse');
+      el.setAttribute('cx',String(cx+Math.cos(ang)*4.5));
+      el.setAttribute('cy',String(cy+Math.sin(ang)*4.5));
+      el.setAttribute('rx','3.5');el.setAttribute('ry','2.2');
+      el.setAttribute('transform',`rotate(${ang*180/Math.PI+90},${cx+Math.cos(ang)*4.5},${cy+Math.sin(ang)*4.5})`);
+      el.setAttribute('fill',cols[i%3]);el.setAttribute('opacity','0.85');
+      g.appendChild(el);
+    }
+    const c=document.createElementNS(ns,'circle');
+    c.setAttribute('cx',String(cx));c.setAttribute('cy',String(cy));
+    c.setAttribute('r','2');c.setAttribute('fill','#e8c060');c.setAttribute('opacity','0.9');
+    g.appendChild(c);
+    return g;
+  }
+
+  const SWAYS=['s1','s2','s3','s4','s5','s6','s7','s8'];
+  let si=0;
+  function ns_sway(){return SWAYS[(si++)%SWAYS.length];}
+
+  function buildSVG(){
+    const svg=document.createElementNS(ns,'svg');
+    svg.setAttribute('viewBox','0 0 420 920');
+    svg.setAttribute('preserveAspectRatio','xMidYMid slice');
+    svg.setAttribute('class','branches-svg');
+
+    /* ── MAIN TRUNK (inner/right edge, runs full height) ── */
+    svg.appendChild(mkTwig(
+      'M 395,0 C 390,80 398,170 392,260 C 386,355 394,445 388,540 C 382,630 390,720 385,820 C 382,870 386,900 383,920',
+      4.5,TC[0]));
+
+    /* ── 7 PRIMARY BRANCHES (from trunk going leftward) ── */
+    const branches=[
+      {d:'M 390,860 C 340,848 280,836 215,822 C 165,812 115,803 68,795 C 42,790 18,786 0,783', w:2.6, c:TC[1]},
+      {d:'M 388,720 C 336,707 272,695 207,682 C 156,672 106,663 60,656 C 36,651 12,647 0,645', w:2.3, c:TC[1]},
+      {d:'M 386,578 C 332,565 268,553 202,540 C 150,530 100,521 54,514 C 32,510 10,507 0,505', w:2.0, c:TC[2]},
+      {d:'M 383,436 C 328,423 264,411 198,398 C 146,388 96,379 50,372 C 28,368 8,365 0,363', w:1.8, c:TC[2]},
+      {d:'M 380,295 C 324,282 260,270 194,258 C 142,248 92,240 46,233 C 24,229 6,226 0,225', w:1.5, c:TC[3]},
+      {d:'M 377,158 C 320,145 256,134 190,122 C 138,113 88,106 42,100 C 20,97 4,95 0,94', w:1.3, c:TC[3]},
+      {d:'M 374,38 C 316,28 252,19 186,11 C 134,5 84,1 38,0', w:1.0, c:TC[4]},
+    ];
+    branches.forEach(b=>svg.appendChild(mkTwig(b.d,b.w,b.c)));
+
+    /* ── SUB-TWIGLETS off each branch ── */
+    const twiglets=[
+      /* branch 0 (y≈860) */
+      'M 310,840 C 302,825 296,810 294,796',
+      'M 230,828 C 222,813 216,798 214,783',
+      'M 148,815 C 141,800 136,784 135,770',
+      'M 70,801 C 64,786 60,771 59,757',
+      /* branch 1 (y≈720) */
+      'M 305,700 C 297,685 291,670 290,656',
+      'M 222,688 C 214,672 208,657 207,642',
+      'M 138,676 C 131,660 126,645 125,630',
+      /* branch 2 (y≈578) */
+      'M 298,558 C 291,543 285,527 284,512',
+      'M 215,546 C 208,530 203,515 202,500',
+      'M 130,535 C 124,519 119,504 118,489',
+      /* branch 3 (y≈436) */
+      'M 290,416 C 284,400 278,384 277,369',
+      'M 206,404 C 200,388 195,373 194,358',
+      /* branch 4 (y≈295) */
+      'M 282,275 C 276,259 271,243 270,228',
+      'M 198,264 C 192,248 188,232 187,217',
+      /* branch 5 (y≈158) */
+      'M 275,138 C 269,122 264,106 263,91',
+    ];
+    twiglets.forEach(d=>svg.appendChild(mkTwig(d,0.9,TC[3])));
+
+    /* ── LEAVES: place along each branch ── */
+
+    /* Branch 0 (y≈860) */
+    const b0leaves=[
+      [360,851,16,8,  -8],  [318,842,17,8.5,-12],[274,833,14,7,  -15],
+      [232,825,16,8,  -18], [188,817,13,6.5,-20],[146,809,15,7.5,-23],
+      [104,803,13,6.5,-26], [62,796, 12,6,  -28],[24,790, 11,5.5,-30],
+    ];
+    b0leaves.forEach(([cx,cy,rx,ry,rot],i)=>
+      svg.appendChild(mkLeaf(cx,cy,rx,ry,rot,LC[i%LC.length],ns_sway(),0.88)));
+    /* Hanging from twiglets */
+    svg.appendChild(mkHangLeaf(295,807,13,6, 75,LC[2], ns_sway(),0.80));
+    svg.appendChild(mkHangLeaf(215,795,12,6, 78,LC[5], ns_sway(),0.78));
+    svg.appendChild(mkHangLeaf(136,782,11,5.5,74,LC[8], ns_sway(),0.76));
+    svg.appendChild(mkHangLeaf(60, 769,10,5,  72,LC[11],ns_sway(),0.74));
+
+    /* Branch 1 (y≈720) */
+    const b1leaves=[
+      [355,710,15,7.5,-9], [311,701,16,8,  -13],[267,692,13,6.5,-17],
+      [223,684,15,7.5,-20],[179,675,13,6.5,-23],[135,668,14,7,  -26],
+      [91,661, 12,6,  -28],[48,654, 11,5.5,-30],
+    ];
+    b1leaves.forEach(([cx,cy,rx,ry,rot],i)=>
+      svg.appendChild(mkLeaf(cx,cy,rx,ry,rot,LC[(i+3)%LC.length],ns_sway(),0.86)));
+    svg.appendChild(mkHangLeaf(291,667,12,6, 76,LC[4], ns_sway(),0.78));
+    svg.appendChild(mkHangLeaf(208,655,11,5.5,73,LC[9], ns_sway(),0.76));
+    svg.appendChild(mkHangLeaf(126,643,10,5,  71,LC[12],ns_sway(),0.74));
+
+    /* Branch 2 (y≈578) */
+    const b2leaves=[
+      [350,568,15,7.5,-10],[306,559,14,7,  -14],[262,551,13,6.5,-17],
+      [218,542,15,7.5,-21],[174,534,12,6,  -24],[130,527,13,6.5,-27],
+      [86,520, 11,5.5,-29],[42,513, 10,5,  -31],
+    ];
+    b2leaves.forEach(([cx,cy,rx,ry,rot],i)=>
+      svg.appendChild(mkLeaf(cx,cy,rx,ry,rot,LC[(i+6)%LC.length],ns_sway(),0.85)));
+    svg.appendChild(mkHangLeaf(285,524,12,6, 74,LC[1], ns_sway(),0.77));
+    svg.appendChild(mkHangLeaf(203,512,11,5.5,72,LC[7], ns_sway(),0.75));
+    svg.appendChild(mkHangLeaf(119,501,10,5,  70,LC[11],ns_sway(),0.73));
+
+    /* Branch 3 (y≈436) */
+    const b3leaves=[
+      [346,426,14,7,  -11],[302,417,15,7.5,-15],[258,408,13,6.5,-18],
+      [214,400,14,7,  -22],[170,392,12,6,  -25],[126,385,12,6,  -28],
+      [82,378, 11,5.5,-30],[38,371, 10,5,  -32],
+    ];
+    b3leaves.forEach(([cx,cy,rx,ry,rot],i)=>
+      svg.appendChild(mkLeaf(cx,cy,rx,ry,rot,LC[(i+2)%LC.length],ns_sway(),0.84)));
+    svg.appendChild(mkHangLeaf(278,382,11,5.5,73,LC[3], ns_sway(),0.76));
+    svg.appendChild(mkHangLeaf(195,370,10,5,  71,LC[10],ns_sway(),0.74));
+
+    /* Branch 4 (y≈295) */
+    const b4leaves=[
+      [340,285,14,7,  -12],[296,276,14,7,  -16],[252,268,12,6,  -19],
+      [208,260,13,6.5,-23],[164,253,12,6,  -26],[120,246,11,5.5,-29],
+      [76,240, 11,5.5,-31],[32,234, 10,5,  -33],
+    ];
+    b4leaves.forEach(([cx,cy,rx,ry,rot],i)=>
+      svg.appendChild(mkLeaf(cx,cy,rx,ry,rot,LC[(i+5)%LC.length],ns_sway(),0.83)));
+    svg.appendChild(mkHangLeaf(271,242,11,5.5,72,LC[6], ns_sway(),0.75));
+    svg.appendChild(mkHangLeaf(188,230,10,5,  70,LC[13],ns_sway(),0.73));
+
+    /* Branch 5 (y≈158) */
+    const b5leaves=[
+      [336,148,13,6.5,-13],[292,140,13,6.5,-17],[248,132,12,6,  -20],
+      [204,124,12,6,  -24],[160,117,11,5.5,-27],[116,111,10,5,  -29],
+      [72,105, 10,5,  -31],[28,99,  9,4.5, -33],
+    ];
+    b5leaves.forEach(([cx,cy,rx,ry,rot],i)=>
+      svg.appendChild(mkLeaf(cx,cy,rx,ry,rot,LC[(i+9)%LC.length],ns_sway(),0.82)));
+    svg.appendChild(mkHangLeaf(264,103,10,5,  71,LC[0], ns_sway(),0.74));
+
+    /* Branch 6 (y≈38) */
+    const b6leaves=[
+      [330,30,12,6,  -14],[285,23,12,6,  -18],[240,17,11,5.5,-21],
+      [195,12,11,5.5,-25],[150,7, 10,5,  -28],[105,3, 10,5,  -30],
+      [60,0,  9,4.5,-32],
+    ];
+    b6leaves.forEach(([cx,cy,rx,ry,rot],i)=>
+      svg.appendChild(mkLeaf(cx,cy,rx,ry,rot,LC[(i+11)%LC.length],ns_sway(),0.80)));
+
+    /* Extra large accent leaves hanging off the trunk itself */
+    const trunkHangers=[
+      [388,900,20,10,85, LC[0], 'lf-hang s1'],
+      [386,760,18,9, 83, LC[3], 'lf-hang s3'],
+      [384,618,19,9.5,82,LC[6], 'lf-hang s5'],
+      [382,476,18,9, 80, LC[2], 'lf-hang s7'],
+      [380,335,17,8.5,82,LC[9], 'lf-hang s2'],
+      [378,195,16,8, 80, LC[12],'lf-hang s4'],
+      [376,72, 15,7.5,83,LC[1], 'lf-hang s6'],
+    ];
+    trunkHangers.forEach(([cx,cy,rx,ry,rot,col,cls])=>{
+      const g=document.createElementNS(ns,'g');
+      g.setAttribute('class',cls);
+      g.setAttribute('transform',`translate(${cx},${cy}) rotate(${rot})`);
+      const p=document.createElementNS(ns,'path');
+      p.setAttribute('d',
+        `M 0,0 C ${rx*0.5},${ry*1.2} ${rx},${ry*0.55} ${rx},0
+               C ${rx},${-ry*0.55} ${rx*0.5},${-ry*1.2} 0,0 Z`);
+      p.setAttribute('fill',col);p.setAttribute('opacity','0.72');
+      g.appendChild(p);
+      svg.appendChild(g);
+    });
+
+    /* Dried flower buds at branch tips */
+    [[0,783],[0,645],[0,505],[0,363],[0,225],[0,94]]
+      .forEach(([x,y])=>svg.appendChild(mkBud(x+5,y,4,'#d4a040')));
+
+    /* Sampaguita-style flowers along the trunk */
+    [[390,200],[388,440],[386,680]].forEach(([x,y])=>svg.appendChild(mkFlower(x,y)));
+
+    return svg;
+  }
+
+  /* Inject into both panels */
+  document.getElementById('twigLeft').insertBefore(buildSVG(), document.querySelector('#twigLeft .twig-edge'));
+  document.getElementById('twigRight').insertBefore(buildSVG(), document.querySelector('#twigRight .twig-edge'));
+
+  /* ── SCATTER LEAVES ── (appear when panels open) */
+  const scatterContainer=document.getElementById('scatter-leaves');
+  const scatterData=[
+    /* left cluster */
+    {left:'46%',top:'15%','--tx':'-90px','--rot':'200deg','--dur':'2.6s','--delay':'0.1s', w:22,h:13,c:LC[0]},
+    {left:'47%',top:'30%','--tx':'-75px','--rot':'150deg','--dur':'2.2s','--delay':'0.3s', w:18,h:10,c:LC[2]},
+    {left:'48%',top:'50%','--tx':'-110px','--rot':'230deg','--dur':'2.8s','--delay':'0.05s',w:24,h:14,c:LC[5]},
+    {left:'46%',top:'65%','--tx':'-85px','--rot':'190deg','--dur':'2.4s','--delay':'0.25s',w:20,h:12,c:LC[8]},
+    {left:'47%',top:'80%','--tx':'-95px','--rot':'210deg','--dur':'3.0s','--delay':'0.15s',w:19,h:11,c:LC[3]},
+    /* right cluster */
+    {left:'54%',top:'20%','--tx':'88px', '--rot':'-200deg','--dur':'2.5s','--delay':'0.2s', w:21,h:12,c:LC[1]},
+    {left:'53%',top:'40%','--tx':'72px', '--rot':'-160deg','--dur':'2.3s','--delay':'0.08s',w:18,h:10,c:LC[6]},
+    {left:'54%',top:'60%','--tx':'105px','--rot':'-220deg','--dur':'2.7s','--delay':'0.35s',w:23,h:13,c:LC[9]},
+    {left:'53%',top:'75%','--tx':'80px', '--rot':'-185deg','--dur':'2.9s','--delay':'0.12s',w:20,h:11,c:LC[11]},
+    /* centre drifters */
+    {left:'49%',top:'10%','--tx':'-40px','--rot':'280deg','--dur':'3.2s','--delay':'0.4s', w:16,h:9, c:LC[4]},
+    {left:'51%',top:'45%','--tx':'45px', '--rot':'-270deg','--dur':'3.5s','--delay':'0.18s',w:17,h:10,c:LC[7]},
+    {left:'50%',top:'70%','--tx':'-30px','--rot':'310deg','--dur':'2.8s','--delay':'0.28s',w:15,h:8, c:LC[12]},
+  ];
+  scatterData.forEach(d=>{
+    const el=document.createElement('div');
+    el.className='s-leaf';
+    el.style.left=d.left;
+    el.style.top=d.top;
+    el.style.width=d.w+'px';
+    el.style.height=d.h+'px';
+    el.style.background=d.c;
+    el.style.borderRadius='50% 0 50% 50%';
+    el.style.setProperty('--tx',d['--tx']);
+    el.style.setProperty('--rot',d['--rot']);
+    el.style.setProperty('--dur',d['--dur']);
+    el.style.setProperty('--delay',d['--delay']);
+    scatterContainer.appendChild(el);
+  });
+})();
+
 /* ================================================================
    INTRO SEQUENCE
-   Step 1: Floating envelope -> click
-   Step 2: Video plays (auto-ends or skip)
-   Step 3: Curtain pulls apart + light beam -> landing page
    ================================================================ */
 document.body.style.overflow='hidden';
 
 function openEnvelope(){
-  const envStage=document.getElementById('envelope-stage');
-  const envWrap=document.getElementById('envelope-wrap');
-
-  // Fly envelope upward and fade
-  envWrap.style.transition='transform .8s cubic-bezier(.36,.07,.19,.97), opacity .6s .3s';
-  envWrap.style.transform='translateY(-160px) rotate(12deg) scale(.7)';
-  envWrap.style.opacity='0';
-
-  setTimeout(function(){
-    envStage.style.transition='opacity .5s';
-    envStage.style.opacity='0';
-    envStage.style.pointerEvents='none';
-  },600);
-
-  setTimeout(showVideoStage, 900);
+  const eS=document.getElementById('envelope-stage'),eW=document.getElementById('envelope-wrap');
+  eW.style.transition='transform .8s cubic-bezier(.36,.07,.19,.97), opacity .6s .3s';
+  eW.style.transform='translateY(-160px) rotate(12deg) scale(.7)';
+  eW.style.opacity='0';
+  setTimeout(()=>{eS.style.transition='opacity .5s';eS.style.opacity='0';eS.style.pointerEvents='none';},600);
+  setTimeout(showVideoStage,900);
 }
 
 function showVideoStage(){
   const vs=document.getElementById('video-stage');
   vs.classList.add('show');
   const video=document.getElementById('prenup-video');
-
-  video.addEventListener('ended',function(){
-    setTimeout(skipToReveal,600);
-  });
-
-  const src=video.querySelector('source')?video.querySelector('source').getAttribute('src'):'';
-  if(!src||src===''){
+  video.addEventListener('ended',()=>setTimeout(skipToReveal,600));
+  const src=video.querySelector('source').getAttribute('src')||'';
+  if(!src){
     const ph=document.createElement('div');
     ph.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:rgba(255,255,255,.6);font-family:Cormorant Garamond,serif;font-size:clamp(15px,4vw,20px);font-style:italic;pointer-events:none;line-height:1.8;width:90%;';
     ph.innerHTML='Your prenup video will appear here<br><span style="font-size:clamp(11px,2.5vw,13px);letter-spacing:.15em;font-style:normal;opacity:.7;">Replace the &lt;source src=""&gt; with your video URL</span>';
@@ -619,45 +887,51 @@ function showVideoStage(){
 
 function skipToReveal(){
   const vs=document.getElementById('video-stage');
-  const video=document.getElementById('prenup-video');
-  video.pause();
+  document.getElementById('prenup-video').pause();
   vs.style.transition='opacity .5s';
   vs.style.opacity='0';
-  setTimeout(showCurtainReveal,500);
+  setTimeout(showTwigReveal,500);
 }
 
-function showCurtainReveal(){
-  const cs=document.getElementById('curtain-stage');
-  const leftPanel=document.querySelector('.curtain-left');
-  const rightPanel=document.querySelector('.curtain-right');
+function showTwigReveal(){
+  const ts=document.getElementById('twig-stage');
+  const lp=document.querySelector('.twig-left');
+  const rp=document.querySelector('.twig-right');
   const overlay=document.getElementById('intro-overlay');
 
-  cs.style.opacity='1';
-  cs.style.pointerEvents='all';
+  ts.classList.add('show');
 
-  setTimeout(function(){
-    leftPanel.classList.add('open-left');
-    rightPanel.classList.add('open-right');
-    cs.classList.add('light-on');
-  },600);
+  /* Moment of stillness then parting */
+  setTimeout(()=>{
+    lp.classList.add('open-left');
+    rp.classList.add('open-right');
+    ts.classList.add('light-on');
+    /* Trigger scatter leaves */
+    setTimeout(()=>ts.classList.add('scattering'),300);
+    /* Hide seam */
+    const seam=document.getElementById('twig-seam');
+    seam.style.transition='opacity .4s .3s';seam.style.opacity='0';
+  },700);
 
-  setTimeout(function(){
-    overlay.style.transition='opacity 1.2s ease';
+  /* Fade overlay */
+  setTimeout(()=>{
+    overlay.style.transition='opacity 1.3s ease';
     overlay.style.opacity='0';
     document.body.style.overflow='auto';
-  },2600);
+  },2900);
 
-  setTimeout(function(){
+  /* Remove overlay, show nav */
+  setTimeout(()=>{
     overlay.classList.add('hidden');
     document.getElementById('dotNav').style.opacity='1';
     document.querySelector('.music-btn').style.opacity='1';
-    var hero=document.getElementById('hero');
+    const hero=document.getElementById('hero');
     if(hero){
       hero.style.transform='scale(1.04)';
       hero.style.transition='transform 1.2s cubic-bezier(.22,1,.36,1)';
-      setTimeout(function(){hero.style.transform='scale(1)';},50);
+      setTimeout(()=>hero.style.transform='scale(1)',50);
     }
-  },3900);
+  },4200);
 }
 </script>
 </body>
