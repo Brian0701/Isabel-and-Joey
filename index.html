@@ -25,12 +25,18 @@
       z-index: 9999;
       background-image: url('background3.JPG');
       background-size: cover;
-      background-position: center;
+      background-position: top center;
       background-color: #1a0f08;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      #intro-overlay { 
+        background-image: url('background2.JPG');
+        background-size: cover;
+        background-position: top center;
+      }
     }
 
     /* subtle parchment grain */
@@ -234,7 +240,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: url('background3.JPG') center/cover no-repeat;
+      background: url('background3.JPG') top center/cover no-repeat;
       background-color: #f0ebe3;
       position: relative;
       text-align: center;
@@ -247,6 +253,13 @@
       background: rgba(255,255,255,0.15);
       pointer-events: none;
       z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .hero { 
+        background-image: url('background2.JPG');
+        background-size: cover;
+        background-position: top center;
+      }
     }
     .hero-content {
       position: relative;
@@ -383,7 +396,7 @@
     .event-card-ceremony {
       background-image: url('seminary_parish.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: top center;
       border: none;
       padding: 0;
       overflow: hidden;
@@ -392,9 +405,10 @@
     }
     .event-card-ceremony:hover { border-color: transparent; }
     .event-card-reception {
-      background-image: url('timmy.jpg');
+      background-image: url('
+        timmy.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: top center;
       border: none;
       padding: 0;
       overflow: hidden;
@@ -700,7 +714,7 @@
 
     <!-- BACKGROUND MUSIC -->
     <audio id="bgMusic" loop>
-      <source src="song.mp3" type="audio/mpeg">
+      <source src="music/song.mp3" type="audio/mpeg">
     </audio>
     <button id="musicBtn" onclick="toggleMusic()" title="Toggle music" style="
       position:fixed;bottom:24px;right:24px;z-index:300;width:42px;height:42px;
