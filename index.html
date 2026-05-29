@@ -23,7 +23,7 @@
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background-image: url('background3.JPG');
+      background-image: url('images/background3.JPG');
       background-size: cover;
       background-position: top center;
       background-color: #1a0f08;
@@ -33,7 +33,7 @@
     }
     @media (max-width: 768px) {
       #intro-overlay { 
-        background-image: url('background2.JPG');
+        background-image: url('images/background2.JPG');
         background-size: cover;
         background-position: top center;
       }
@@ -240,7 +240,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: url('background3.JPG') top center/cover no-repeat;
+      background: url('images/background3.JPG') top center/cover no-repeat;
       background-color: #f0ebe3;
       position: relative;
       text-align: center;
@@ -256,7 +256,7 @@
     }
     @media (max-width: 768px) {
       .hero { 
-        background-image: url('background2.JPG');
+        background-image: url('images/background2.JPG');
         background-size: cover;
         background-position: top center;
       }
@@ -394,7 +394,7 @@
     }
     .event-card:hover { border-color: #8b7060; }
     .event-card-ceremony {
-      background-image: url('seminary_parish.jpg');
+      background-image: url('images/seminary_parish.jpg');
       background-size: cover;
       background-position: top center;
       border: none;
@@ -405,8 +405,7 @@
     }
     .event-card-ceremony:hover { border-color: transparent; }
     .event-card-reception {
-      background-image: url('
-        timmy.jpg');
+      background-image: url('images/timmy.jpg');
       background-size: cover;
       background-position: top center;
       border: none;
@@ -457,7 +456,7 @@
     }
     .travel-card:hover { border-color: #8b7060; }
     .travel-card-tobis {
-      background-image: url('tobis.jpg');
+      background-image: url('images/tobis.jpg');
       background-size: cover;
       background-position: center;
       border: none;
@@ -519,7 +518,7 @@
     .party-photo:hover { border-color: #8b7060; }
     .party-photo svg { opacity: 0.4; }
     .party-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: none; }
-    .party-photo input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .party-photo input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; font-size: 0; }
     .party-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 20px;
@@ -563,7 +562,7 @@
 
     /* ── RSVP ── */
     .rsvp-form { max-width: 520px; }
-    .rsvp-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8b7060; display: block; margin-bottom: 8px; }
+    .rsvp-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #8b7060; display: block; margin-bottom: 8px; margin-top: 4px; }
     .rsvp-hint { font-size: 12px; color: #9a8070; margin-bottom: 20px; font-style: italic; }
     .rsvp-input {
       width: 100%;
@@ -597,6 +596,9 @@
     .rsvp-btn:hover { background: #7a5040; }
     .rsvp-btn:active { transform: scale(0.98); }
     .rsvp-success { display: none; text-align: center; padding: 48px 0; }
+    .rsvp-radio-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+    .rsvp-radio-label { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #5c3d2e; cursor: pointer; }
+    .rsvp-radio-label input[type="radio"] { width: 16px; height: 16px; flex-shrink: 0; accent-color: #5c3d2e; }
     .rsvp-success .check { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-style: italic; color: #8b7060; }
     .rsvp-success p { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; color: #5c3d2e; margin-top: 12px; }
 
@@ -622,6 +624,17 @@
       .party-photo { width: 140px; height: 140px; }
       #envelope-svg { width: 220px; height: auto; }
       .env-invite-text { font-size: 11px; }
+
+      /* Fix RSVP form on mobile */
+      .rsvp-form { width: 100%; }
+      .rsvp-input { font-size: 16px; } /* prevent iOS zoom on focus */
+      .rsvp-radio-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+      .rsvp-radio-label { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5c3d2e; cursor: pointer; }
+      .rsvp-radio-label input[type="radio"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #5c3d2e; }
+
+      /* Fix wedding party photo upload on mobile */
+      .party-photo input[type="file"] { display: none; }
+      .party-group { gap: 20px; }
     }
   </style>
 </head>
@@ -714,7 +727,7 @@
 
     <!-- BACKGROUND MUSIC -->
     <audio id="bgMusic" loop>
-      <source src="song.mp3" type="audio/mpeg">
+      <source src="music/song.mp3" type="audio/mpeg">
     </audio>
     <button id="musicBtn" onclick="toggleMusic()" title="Toggle music" style="
       position:fixed;bottom:24px;right:24px;z-index:300;width:42px;height:42px;
