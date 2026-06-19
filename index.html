@@ -455,40 +455,48 @@
     .event-btn-outline { background: transparent; border: 1px solid #5c3d2e; color: #5c3d2e; }
     .event-btn-outline:hover { background: #ede6de; }
 
-    /* ── TRAVEL ── */
-    .travel-card {
+    /* ── ATTIRE GUIDE ── */
+    .attire-intro { font-size: 13px; color: #7a6050; margin-bottom: 24px; line-height: 1.75; }
+    .attire-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .attire-card {
       background: #faf7f4;
       border: 1px solid #d9cfc4;
       border-radius: 8px;
-      padding: 18px 22px;
-      margin-bottom: 14px;
+      padding: 24px 22px;
       transition: border-color 0.2s;
     }
-    .travel-card:hover { border-color: #8b7060; }
-    .travel-card-tobis {
-      background-image: url('tobis.jpg');
-      background-size: cover;
-      background-position: center;
-      border: none;
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-      min-height: 260px;
-      border-radius: 8px;
-      margin-bottom: 14px;
+    .attire-card:hover { border-color: #8b7060; }
+    .attire-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #8b7060; margin-bottom: 10px; }
+    .attire-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: #5c3d2e; margin-bottom: 12px; }
+    .attire-list { font-size: 13px; color: #7a6050; line-height: 1.85; list-style: none; }
+    .attire-list li { padding-left: 16px; position: relative; margin-bottom: 6px; }
+    .attire-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #b09070;
     }
-    .travel-card-tobis .event-card-overlay {
-      background: linear-gradient(90deg, rgba(40,20,10,0.95) 0%, rgba(40,20,10,0.85) 60%, rgba(40,20,10,0.0) 100%);
-      padding: 22px 26px 26px;
-      width: 100%;
-      min-height: 260px;
+    .attire-palette {
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 14px;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    .travel-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #8b7060; margin-bottom: 6px; }
-    .travel-name { font-size: 15px; font-weight: 500; color: #5c3d2e; margin-bottom: 4px; }
-    .travel-detail { font-size: 13px; color: #7a6050; line-height: 1.65; }
+    .attire-swatch {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.12);
+      flex-shrink: 0;
+    }
+    .attire-note {
+      font-size: 12px;
+      color: #9a8070;
+      font-style: italic;
+      margin-top: 18px;
+      line-height: 1.7;
+    }
 
     /* ── REGISTRY ── */
     .registry-intro { font-size: 13px; color: #7a6050; margin-bottom: 24px; line-height: 1.75; }
@@ -634,6 +642,7 @@
       .party-photo { width: 140px; height: 140px; }
       #envelope-svg { width: 220px; height: auto; }
       .env-invite-text { font-size: 11px; }
+      .attire-grid { grid-template-columns: 1fr; }
 
       /* Fix RSVP form on mobile */
       .rsvp-form { width: 100%; }
@@ -751,7 +760,7 @@
     <nav class="dot-nav" id="dotNav">
       <a href="#home"     title="Home"></a>
       <a href="#schedule" title="Schedule"></a>
-      <a href="#travel"   title="Travel"></a>
+      <a href="#attire"   title="Attire Guide"></a>
       <a href="#registry" title="Registry"></a>
       <a href="#party"    title="Wedding Party"></a>
       <a href="#gallery"  title="Gallery"></a>
@@ -798,7 +807,7 @@
         We are so grateful to share this beautiful milestone with the people we love most.
         We hope you will join us in celebrating our union surrounded by joy, laughter, and love.<br><br>
         Please scroll through to find all the details about our special day —
-        from schedule and travel tips to registry and RSVPs.
+        from schedule and attire guide to registry and RSVPs.
         <em>"For all the days along the way."</em>
       </p>
     </section>
@@ -848,22 +857,45 @@
 
     <div class="section-sep"></div>
 
-    <!-- TRAVEL -->
-    <section id="travel" class="section">
+    <!-- ATTIRE GUIDE -->
+    <section id="attire" class="section">
       <div class="section-divider-wrap">
-        <div class="section-title">Travel</div>
+        <div class="section-title">Attire Guide</div>
         <div class="section-line"></div>
       </div>
-      <div class="travel-card-tobis">
-        <div class="event-card-overlay">
-          <div class="travel-label" style="color:#e8ddd4;">House or Rental</div>
-          <div class="travel-name" style="color:#fff;font-size:20px;margin-bottom:8px;">Tobi's Escape</div>
-          <div class="travel-detail" style="color:#e8ddd4;">Ponderosa Heights Lt1 Blk 5, Antipolo, Calabarzon 1870, Philippines</div>
-          <div class="event-btn-row" style="margin-top:18px;">
-            <a class="event-btn" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.6);color:#fff;backdrop-filter:blur(4px);" href="https://maps.google.com/?q=Ponderosa+Heights+Lt1+Blk+5+Antipolo+Calabarzon+1870+Philippines" target="_blank">Map</a>
+      <p class="attire-intro">
+        We would love to see everyone dressed in the spirit of our celebration. Here's a quick guide to help you choose your outfit for the day.
+      </p>
+      <div class="attire-grid">
+        <div class="attire-card">
+          <div class="attire-label">For the Ladies</div>
+          <div class="attire-title">Elegant &amp; Modest</div>
+          <ul class="attire-list">
+            <li>Floor-length dress preferred</li>
+            <li>Church-appropriate attire, or bring a cover-up for the ceremony</li>
+            <li>Please follow our color theme below</li>
+          </ul>
+          <div class="attire-palette">
+            <span class="attire-swatch" style="background:#b08040;"></span>
+            <span class="attire-swatch" style="background:#8b6555;"></span>
+            <span class="attire-swatch" style="background:#5c3d2e;"></span>
+            <span class="attire-swatch" style="background:#d9cfc4;"></span>
+            <span class="attire-swatch" style="background:#e8ddd4;"></span>
           </div>
         </div>
+        <div class="attire-card">
+          <div class="attire-label">For the Gentlemen</div>
+          <div class="attire-title">Barong &amp; Earth Tones</div>
+          <ul class="attire-list">
+            <li>Barong Tagalog</li>
+            <li>Khaki or brown pants</li>
+            <li>Closed shoes appropriate for the wedding</li>
+          </ul>
+        </div>
       </div>
+      <p class="attire-note">
+        Our color theme is in warm, earthy tones — think browns, rust, and soft neutrals. We kindly ask guests to avoid wearing white or any shade that may compete with the bridal party.
+      </p>
     </section>
 
     <div class="section-sep"></div>
@@ -875,13 +907,11 @@
         <div class="section-line"></div>
       </div>
       <p class="registry-intro">
-        Your presence is the greatest gift of all. But if you would like to give, we have registered at a few of our favorite places.
+        As we look forward to celebrating our big day with you, your presence is truly the greatest gift we could ask for. However, if you would like to honor us with a gift, a contribution toward our future together as a married couple would be sincerely appreciated
       </p>
       <div class="registry-grid">
-        <div class="registry-card"><div class="registry-store">Rustan's</div><div class="registry-sub">Home &amp; Lifestyle</div></div>
-        <div class="registry-card"><div class="registry-store">S&amp;R Home</div><div class="registry-sub">Kitchen &amp; Living</div></div>
-        <div class="registry-card"><div class="registry-store">Zola</div><div class="registry-sub">Online Registry</div></div>
-        <div class="registry-card"><div class="registry-store">Cash Fund</div><div class="registry-sub">Honeymoon &amp; Beyond</div></div>
+        <div class="registry-card"><div class="registry-store">SM</div><div class="registry-sub">Home</div></div>
+        <div class="registry-card"><div class="registry-store">IKEA</div><div class="registry-sub">Philippines</div></div>
       </div>
     </section>
 
@@ -1055,7 +1085,7 @@
         <div class="section-title">Gallery</div>
         <div class="section-line"></div>
       </div>
-      <p style="font-size:13px;color:#9a8070;margin-bottom:24px;font-style:italic;">
+      <p style="font-size:13px;color:#9a8070;margin-bottom:54px;font-style:italic;">
         Photos coming soon. Check back after our engagement shoot!
       </p>
       <div class="gallery-grid">
@@ -1380,7 +1410,7 @@
   }, { threshold: 0.12 });
   sections.forEach(s => fadeObserver.observe(s));
 
-  const sectionIds = ['home','schedule','travel','registry','party','gallery','faqs','rsvp'];
+  const sectionIds = ['home','schedule','attire','registry','party','gallery','faqs','rsvp'];
   const dotObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
