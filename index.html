@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Isabel & Joey's Wedding</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="prefetch" href="Prenup Photos/LHN_0029.jpg" />
+  <link rel="prefetch" href="Prenup Photos/LHN_0087.jpg" />
+  <link rel="prefetch" href="Prenup Photos/LHN_0220.jpg" />
+  <link rel="prefetch" href="Prenup Photos/LHN_0249.jpg" />
+  <link rel="prefetch" href="Prenup Photos/LHN_0360.jpg" />
+  <link rel="prefetch" href="Prenup Photos/LHN_9196.jpg" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -1878,18 +1884,18 @@
     flipUpdateCounter();
   }
 
-  // Preload all images in batches after page loads
-  window.addEventListener('load', () => {
+  // Aggressive preload all images starting early
+  document.addEventListener('DOMContentLoaded', () => {
     let idx = 0;
     const preloadBatch = () => {
-      for (let i = 0; i < 3 && idx < galleryImages.length; i++, idx++) {
+      for (let i = 0; i < 6 && idx < galleryImages.length; i++, idx++) {
         flipPreloadImage(galleryImages[idx]);
       }
       if (idx < galleryImages.length) {
         if (window.requestIdleCallback) {
-          requestIdleCallback(preloadBatch, { timeout: 500 });
+          requestIdleCallback(preloadBatch, { timeout: 100 });
         } else {
-          setTimeout(preloadBatch, 100);
+          setTimeout(preloadBatch, 50);
         }
       }
     };
