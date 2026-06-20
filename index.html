@@ -754,18 +754,154 @@
     .party-group-label:first-of-type { margin-top: 0; }
 
     /* ── GALLERY ── */
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .gallery-cell {
-      aspect-ratio: 1;
-      background: #e4dbd2;
-      border-radius: 4px;
+    .gallery-stack-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 44px;
+      flex-wrap: wrap;
+      padding: 10px 0 6px;
+    }
+    .photo-stack {
+      position: relative;
+      width: 190px;
+      height: 230px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .stack-layer {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: #e4dbd2;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(74,55,40,0.18);
+      box-shadow: 0 10px 22px rgba(74,55,40,0.22);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .stack-layer.layer-4 { transform: translate(22px, 12px) rotate(7deg);  z-index: 1; }
+    .stack-layer.layer-3 { transform: translate(13px, 6px)  rotate(-4deg); z-index: 2; }
+    .stack-layer.layer-2 { transform: translate(5px, 2px)   rotate(3deg);  z-index: 3; }
+    .stack-layer.layer-1 { transform: translate(0, 0)       rotate(0deg); z-index: 4; }
+    .photo-stack:hover .layer-4 { transform: translate(32px, 18px) rotate(10deg); }
+    .photo-stack:hover .layer-3 { transform: translate(19px, 9px)  rotate(-6deg); }
+    .photo-stack:hover .layer-2 { transform: translate(8px, 4px)   rotate(4deg); }
+    .photo-stack:hover .layer-1 { transform: translate(0, -4px)    rotate(0deg); }
+    .gallery-view-btn-standalone {
+      padding: 11px 34px;
+      border: 1.5px solid #5c3d2e;
+      border-radius: 999px;
+      background: transparent;
+      color: #5c3d2e;
+      font-family: 'Jost', sans-serif;
       font-size: 11px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: #a89080;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .gallery-view-btn-standalone:hover { background: #5c3d2e; color: #f0ebe3; }
+    .gallery-view-btn-standalone:active { transform: scale(0.97); }
+    @media (max-width: 500px) {
+      .gallery-stack-wrap { gap: 28px; }
+      .photo-stack { width: 150px; height: 190px; }
+    }
+
+    /* ── GALLERY FLIPBOOK MODAL ── */
+    #flipbook-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(20,12,6,0.94);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    #flipbook-modal.open { display: flex; }
+    .flipbook-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-family: 'Jost', sans-serif;
+      font-size: 26px;
+      line-height: 1;
+      color: #f5ead6;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.85;
+      padding: 8px;
+    }
+    .flipbook-close:hover { opacity: 1; }
+    .flipbook-counter {
+      color: #d9cfc4;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .flipbook-stage-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      justify-content: center;
+    }
+    .flipbook-stage {
+      position: relative;
+      width: min(82vw, 420px);
+      aspect-ratio: 4 / 5;
+      perspective: 1800px;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .flip-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      background: #e4dbd2;
+    }
+    #flipPage {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      will-change: transform;
+      transform-origin: left center;
+    }
+    .flipbook-nav-btn {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,234,214,0.5);
+      background: rgba(245,234,214,0.08);
+      color: #f5ead6;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .flipbook-nav-btn:hover { background: rgba(245,234,214,0.18); }
+    .flipbook-nav-btn:disabled { opacity: 0.25; cursor: default; }
+    .flipbook-hint {
+      margin-top: 18px;
+      font-size: 11px;
+      font-style: italic;
+      color: #9a8070;
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 600px) {
+      .flipbook-nav-btn { display: none; }
+      .flipbook-stage { width: 88vw; }
     }
 
     /* ── FAQs ── */
@@ -1280,18 +1416,34 @@
         <div class="section-title">Gallery</div>
         <div class="section-line"></div>
       </div>
-      <p style="font-size:13px;color:#9a8070;margin-bottom:54px;font-style:italic;">
+      <p style="font-size:13px;color:#9a8070;margin-bottom:24px;font-style:italic;">
         Photos coming soon. Check back after our engagement shoot!
       </p>
-      <div class="gallery-grid">
-        <div class="gallery-cell">soon</div>
-        <div class="gallery-cell">soon</div>
-        <div class="gallery-cell">soon</div>
-        <div class="gallery-cell">soon</div>
-        <div class="gallery-cell">soon</div>
-        <div class="gallery-cell">soon</div>
+      <div class="gallery-stack-wrap">
+        <div class="photo-stack" onclick="openFlipbook(0)" role="button" tabindex="0" aria-label="Open photo album" onkeydown="if(event.key==='Enter')openFlipbook(0)">
+          <div class="stack-layer layer-4" style="background-image:url('Prenup Photos/LHN_9661.jpg')"></div>
+          <div class="stack-layer layer-3" style="background-image:url('Prenup Photos/LHN_9597.jpg')"></div>
+          <div class="stack-layer layer-2" style="background-image:url('Prenup Photos/LHN_9295.jpg')"></div>
+          <div class="stack-layer layer-1" style="background-image:url('Prenup Photos/LHN_9196.jpg')"></div>
+        </div>
+        <button type="button" class="gallery-view-btn-standalone" onclick="openFlipbook(0)">View Album</button>
       </div>
     </section>
+
+    <!-- GALLERY FLIPBOOK MODAL -->
+    <div id="flipbook-modal">
+      <button type="button" class="flipbook-close" onclick="closeFlipbook()" aria-label="Close">&times;</button>
+      <div class="flipbook-counter" id="flipbook-counter">1 / 6</div>
+      <div class="flipbook-stage-wrap">
+        <button type="button" class="flipbook-nav-btn" id="flipPrevBtn" onclick="flipTo('prev')" aria-label="Previous">&#8249;</button>
+        <div class="flipbook-stage" id="flipStage">
+          <img class="flip-img" id="flipBase" src="" alt="">
+          <img class="flip-img" id="flipPage" src="" alt="">
+        </div>
+        <button type="button" class="flipbook-nav-btn" id="flipNextBtn" onclick="flipTo('next')" aria-label="Next">&#8250;</button>
+      </div>
+      <div class="flipbook-hint">Swipe to turn the page</div>
+    </div>
 
     <div class="section-sep"></div>
 
@@ -1698,6 +1850,160 @@
       btn.textContent = 'Submit';
       btn.disabled = false;
     };
+  }
+
+  /* ══════════════════════════════════════
+     GALLERY FLIPBOOK
+  ══════════════════════════════════════ */
+  const galleryImages = ['Prenup Photos/LHN_0029.jpg','Prenup Photos/LHN_0087.jpg','Prenup Photos/LHN_0220.jpg','Prenup Photos/LHN_0249.jpg','Prenup Photos/LHN_0360.jpg','Prenup Photos/LHN_0367.jpg','Prenup Photos/LHN_0454.jpg','Prenup Photos/LHN_0465.jpg','Prenup Photos/LHN_0564.jpg','Prenup Photos/LHN_0606.jpg','Prenup Photos/LHN_0706.jpg','Prenup Photos/LHN_0803.jpg','Prenup Photos/LHN_0832.jpg','Prenup Photos/LHN_0881.jpg','Prenup Photos/LHN_0955.jpg','Prenup Photos/LHN_9112.jpg','Prenup Photos/LHN_9196.jpg','Prenup Photos/LHN_9295.jpg','Prenup Photos/LHN_9597.jpg','Prenup Photos/LHN_9661.jpg','Prenup Photos/LHN_9910.jpg','Prenup Photos/LHN_9968.jpg','Prenup Photos/LHN_9981.jpg','Prenup Photos/LHN_9995.jpg'];
+  let flipCurrent = 0;
+  let flipAnimating = false;
+  let flipDragging = false;
+  let flipDragDir = null;
+  let flipStartX = 0;
+
+  const flipModal = document.getElementById('flipbook-modal');
+  const flipStage = document.getElementById('flipStage');
+  const flipBaseImg = document.getElementById('flipBase');
+  const flipPageImg = document.getElementById('flipPage');
+  const flipCounter = document.getElementById('flipbook-counter');
+  const flipPrevBtn = document.getElementById('flipPrevBtn');
+  const flipNextBtn = document.getElementById('flipNextBtn');
+
+  function openFlipbook(idx) {
+    flipCurrent = idx;
+    flipModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    flipResetPage();
+    flipUpdateCounter();
+  }
+
+  function closeFlipbook() {
+    flipModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  flipModal.addEventListener('click', function (e) {
+    if (e.target === flipModal) closeFlipbook();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!flipModal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeFlipbook();
+    if (e.key === 'ArrowRight') flipTo('next');
+    if (e.key === 'ArrowLeft') flipTo('prev');
+  });
+
+  function flipUpdateCounter() {
+    flipCounter.textContent = (flipCurrent + 1) + ' / ' + galleryImages.length;
+    flipPrevBtn.disabled = flipCurrent === 0;
+    flipNextBtn.disabled = flipCurrent === galleryImages.length - 1;
+  }
+
+  function flipResetPage() {
+    flipBaseImg.src = galleryImages[flipCurrent];
+    flipPageImg.src = galleryImages[flipCurrent];
+    flipPageImg.style.transition = 'none';
+    flipPageImg.style.transform = 'rotateY(0deg)';
+    flipPageImg.style.filter = 'brightness(1)';
+    flipPageImg.style.transformOrigin = 'left center';
+    void flipPageImg.offsetWidth; // force reflow so the next transition is clean
+  }
+
+  function flipPrepareDrag(direction, target) {
+    flipBaseImg.src = galleryImages[target];
+    flipPageImg.style.transition = 'none';
+    flipPageImg.style.transformOrigin = direction === 'next' ? 'left center' : 'right center';
+    flipPageImg.dataset.dir = direction;
+    flipPageImg.dataset.target = target;
+  }
+
+  flipStage.addEventListener('pointerdown', function (e) {
+    if (flipAnimating) return;
+    flipDragging = true;
+    flipDragDir = null;
+    flipStartX = e.clientX;
+    flipStage.setPointerCapture(e.pointerId);
+  });
+
+  flipStage.addEventListener('pointermove', function (e) {
+    if (!flipDragging) return;
+    const dx = e.clientX - flipStartX;
+
+    if (flipDragDir === null) {
+      if (Math.abs(dx) < 6) return;
+      const dir = dx < 0 ? 'next' : 'prev';
+      const target = dir === 'next' ? flipCurrent + 1 : flipCurrent - 1;
+      if (target < 0 || target >= galleryImages.length) {
+        flipDragDir = 'invalid';
+        return;
+      }
+      flipDragDir = dir;
+      flipPrepareDrag(dir, target);
+    }
+    if (flipDragDir === 'invalid') return;
+
+    const w = flipStage.clientWidth || 320;
+    const progress = Math.min(Math.abs(dx) / w, 1);
+    const angle = progress * 180;
+    flipPageImg.style.transform = 'rotateY(' + (flipDragDir === 'next' ? -angle : angle) + 'deg)';
+    flipPageImg.style.filter = 'brightness(' + (1 - Math.sin(progress * Math.PI) * 0.35) + ')';
+  });
+
+  function flipEndDrag() {
+    if (!flipDragging) return;
+    flipDragging = false;
+    if (!flipDragDir || flipDragDir === 'invalid') { flipDragDir = null; return; }
+
+    const dir = flipDragDir;
+    const target = parseInt(flipPageImg.dataset.target, 10);
+    const match = /rotateY\((-?[\d.]+)deg\)/.exec(flipPageImg.style.transform);
+    const angle = match ? Math.abs(parseFloat(match[1])) : 0;
+    flipDragDir = null;
+    flipAnimating = true;
+    flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
+
+    if (angle > 60) {
+      flipPageImg.style.transform = 'rotateY(' + (dir === 'next' ? -180 : 180) + 'deg)';
+      flipPageImg.style.filter = 'brightness(1)';
+      flipPageImg.addEventListener('transitionend', function handler() {
+        flipPageImg.removeEventListener('transitionend', handler);
+        flipCurrent = target;
+        flipUpdateCounter();
+        flipResetPage();
+        flipAnimating = false;
+      }, { once: true });
+    } else {
+      flipPageImg.style.transform = 'rotateY(0deg)';
+      flipPageImg.style.filter = 'brightness(1)';
+      flipPageImg.addEventListener('transitionend', function handler() {
+        flipPageImg.removeEventListener('transitionend', handler);
+        flipAnimating = false;
+      }, { once: true });
+    }
+  }
+
+  flipStage.addEventListener('pointerup', flipEndDrag);
+  flipStage.addEventListener('pointercancel', flipEndDrag);
+
+  function flipTo(direction) {
+    if (flipAnimating) return;
+    const target = direction === 'next' ? flipCurrent + 1 : flipCurrent - 1;
+    if (target < 0 || target >= galleryImages.length) return;
+
+    flipPrepareDrag(direction, target);
+    flipAnimating = true;
+    flipPageImg.style.transition = 'transform 0.45s cubic-bezier(.2,.7,.3,1)';
+    requestAnimationFrame(function () {
+      flipPageImg.style.transform = 'rotateY(' + (direction === 'next' ? -180 : 180) + 'deg)';
+    });
+    flipPageImg.addEventListener('transitionend', function handler() {
+      flipPageImg.removeEventListener('transitionend', handler);
+      flipCurrent = target;
+      flipUpdateCounter();
+      flipResetPage();
+      flipAnimating = false;
+    }, { once: true });
   }
   </script>
 </body>
