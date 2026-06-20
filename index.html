@@ -658,6 +658,14 @@
       cursor: pointer;
       transition: border-color 0.2s, transform 0.2s;
     }
+    .registry-logo {
+      max-width: 190px;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      margin: 0 auto 14px;
+      display: block;
+    }
     .registry-card:hover { border-color: #8b7060; transform: translateY(-2px); }
     .registry-store { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #5c3d2e; font-weight: 500; }
     .registry-sub { font-size: 12px; color: #9a8070; margin-top: 4px; }
@@ -730,8 +738,8 @@
       position: relative;
       margin-bottom: 20px;
     }
-    .party-photo svg { opacity: 0.4; }
-    .party-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+    .party-photo svg { opacity: 0.4; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .party-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
     .party-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 20px;
@@ -761,6 +769,13 @@
       gap: 44px;
       flex-wrap: wrap;
       padding: 10px 0 6px;
+    }
+    .attire-guide-img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #d9cfc4;
+      margin-bottom: 24px;
+      display: block;
     }
     .photo-stack {
       position: relative;
@@ -1015,7 +1030,7 @@
             <div class="card-names">Isabel &amp; Joey</div>
             <div class="card-line"></div>
             <div class="card-date">July 18 · 2026</div>
-            <div class="card-note">You are cordially invited<br>Antipolo, Rizal, Philippines</div>
+            <div class="card-note">You are cordially invited<br></div>
           </div>
         </div>
 
@@ -1081,7 +1096,7 @@
       <div class="hero-content">
         <div class="couple-names">Isabel <span class="ampersand">&</span> Joey</div>
         <div class="hero-date">July 18, 2026</div>
-        <div class="hero-location">Antipolo, Rizal, Philippines</div>
+        <div class="hero-location"></div>
         <div class="countdown">
           <div class="countdown-unit">
             <span class="countdown-num" id="cd-days">00</span>
@@ -1174,6 +1189,7 @@
       <p class="attire-intro">
         We would love to see everyone dressed in the spirit of our celebration. Here's a quick guide to help you choose your outfit for the day.
       </p>
+      <img src="dress-guide.png" alt="Dress Guide" class="attire-guide-img" onerror="this.style.display='none'">
       <div class="attire-grid">
         <div class="attire-card">
           <div class="attire-label">For the Ladies</div>
@@ -1241,8 +1257,8 @@
 
       <div class="party-group-label" style="margin-top:36px;">Or Shop Our Registry</div>
       <div class="registry-grid">
-        <div class="registry-card"><div class="registry-store">SM</div><div class="registry-sub">Home</div></div>
-        <div class="registry-card"><div class="registry-store">IKEA</div><div class="registry-sub">Philippines</div></div>
+        <div class="registry-card"><img src="sm.png" alt="SM" class="registry-logo" onerror="this.style.display='none'"><div class="registry-store">SM</div><div class="registry-sub">Home</div></div>
+        <div class="registry-card"><img src="IKEA.jpg" alt="IKEA" class="registry-logo" onerror="this.style.display='none'"><div class="registry-store">IKEA</div><div class="registry-sub">Philippines</div></div>
       </div>
     </section>
 
@@ -1260,7 +1276,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="bride.jpg" alt="Maria Isabel Ogrimina" onerror="this.style.display='none'">
+            <img src="Isabel Ogrimina.jpg" alt="Maria Isabel Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Maria Isabel Ogrimina</div>
           <div class="party-role">Bride</div>
@@ -1268,7 +1284,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="groom.jpg" alt="Joey Clemen" onerror="this.style.display='none'">
+            <img src="groom.png" alt="Joey Clemen" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Joey Clemen</div>
           <div class="party-role">Groom</div>
@@ -1280,7 +1296,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="matron-of-honor.jpg" alt="Freya Naglak" onerror="this.style.display='none'">
+            <img src="Freya Naglak.png" alt="Freya Naglak" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Freya Naglak</div>
           <div class="party-role">Matron of Honor</div>
@@ -1288,7 +1304,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="best-man.jpg" alt="Aljun Welba" onerror="this.style.display='none'">
+            <img src="Aljun Welba.jpg" alt="Aljun Welba" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Aljun Welba</div>
           <div class="party-role">Best Man</div>
@@ -1300,7 +1316,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="bridesmaid-1.jpg" alt="Maria Andrea Ogrimina" onerror="this.style.display='none'">
+            <img src="Andrea Ogrimina.jpg" alt="Maria Andrea Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Maria Andrea Ogrimina</div>
           <div class="party-role">Bridesmaid</div>
@@ -1308,7 +1324,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="bridesmaid-2.jpg" alt="Maria Paula Ogrimina" onerror="this.style.display='none'">
+            <img src="Paula Ogrimina.png" alt="Maria Paula Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Maria Paula Ogrimina</div>
           <div class="party-role">Bridesmaid</div>
@@ -1316,7 +1332,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="bridesmaid-3.jpg" alt="Chriselle Joy Diaz" onerror="this.style.display='none'">
+            <img src="Chriselle Joy Diaz.jpg" alt="Chriselle Joy Diaz" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Chriselle Joy Diaz</div>
           <div class="party-role">Bridesmaid</div>
@@ -1324,7 +1340,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="bridesmaid-4.jpg" alt="Suchi Taruballes" onerror="this.style.display='none'">
+            <img src="Suchi Taruballes.jpg" alt="Suchi Taruballes" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Suchi Taruballes</div>
           <div class="party-role">Bridesmaid</div>
@@ -1332,10 +1348,50 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="bridesmaid-5.jpg" alt="Renilyn Dayao" onerror="this.style.display='none'">
+            <img src="Renilyn Dayao.jpg" alt="Renilyn Dayao" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Renilyn Dayao</div>
           <div class="party-role">Bridesmaid</div>
+        </div>
+      </div>
+
+      <div class="party-group-label">Groomsmen</div>
+      <div class="party-group">
+        <div class="party-member">
+          <div class="party-photo">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <img src="Ace miras.png" alt="Ace Miras" onerror="this.style.display='none'">
+          </div>
+          <div class="party-name">Ace Miras</div>
+          <div class="party-role">Groomsman</div>
+        </div>
+        <div class="party-member">
+          <div class="party-photo">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <img src="Jester Graban.jpeg" alt="Jester Graban" onerror="this.style.display='none'">
+          </div>
+          <div class="party-name">Jester Graban</div>
+          <div class="party-role">Groomsman</div>
+        </div>
+      </div>
+
+      <div class="party-group-label">Groomswomen</div>
+      <div class="party-group">
+        <div class="party-member">
+          <div class="party-photo">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <img src="Joan Clemen.jpeg" alt="Joan Clemen" onerror="this.style.display='none'">
+          </div>
+          <div class="party-name">Joan Clemen</div>
+          <div class="party-role">Groomswoman</div>
+        </div>
+        <div class="party-member">
+          <div class="party-photo">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            <img src="Mary Joy Clemen.jpeg" alt="Mary Joy Clemen" onerror="this.style.display='none'">
+          </div>
+          <div class="party-name">Mary Joy Clemen</div>
+          <div class="party-role">Groomswoman</div>
         </div>
       </div>
 
@@ -1344,7 +1400,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="flower-girl-1.jpg" alt="Isla Kiselle Taruballes" onerror="this.style.display='none'">
+            <img src="Isla Taruballes.jpg" alt="Isla Kiselle Taruballes" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Isla Kiselle Taruballes</div>
           <div class="party-role">Flower Girl</div>
@@ -1352,7 +1408,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="flower-girl-2.jpg" alt="Aaliyah Joelene Labrador" onerror="this.style.display='none'">
+            <img src="Aaliyah Joelene Labrador.jpg" alt="Aaliyah Joelene Labrador" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Aaliyah Joelene Labrador</div>
           <div class="party-role">Flower Girl</div>
@@ -1360,7 +1416,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="ring-bearer.jpg" alt="Kristofer Clemen" onerror="this.style.display='none'">
+            <img src="kristofer clemen.png" alt="Kristofer Clemen" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Kristofer Clemen</div>
           <div class="party-role">Ring Bearer</div>
@@ -1372,7 +1428,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="mother-of-bride.jpg" alt="Fredilyn Ogrimina" onerror="this.style.display='none'">
+            <img src="Fredilyn Ogrimina.jpg" alt="Fredilyn Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Fredilyn Ogrimina</div>
           <div class="party-role">Mother of the Bride</div>
@@ -1380,7 +1436,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="father-of-bride.jpg" alt="Sonny Ogrimina" onerror="this.style.display='none'">
+            <img src="Sonny Ogrimina.jpg" alt="Sonny Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Sonny Ogrimina</div>
           <div class="party-role">Father of the Bride</div>
@@ -1392,7 +1448,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="mother-of-groom.jpg" alt="Delia Clemen" onerror="this.style.display='none'">
+            <img src="Delia Clemen.png" alt="Delia Clemen" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Delia Clemen</div>
           <div class="party-role">Mother of the Groom</div>
@@ -1400,7 +1456,7 @@
         <div class="party-member">
           <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img src="father-of-groom.jpg" alt="Ambrosio Clemen" onerror="this.style.display='none'">
+            <img src="Ambrosio Clemen.png" alt="Ambrosio Clemen" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Ambrosio Clemen</div>
           <div class="party-role">Father of the Groom</div>
@@ -1472,10 +1528,8 @@
         <div class="section-line"></div>
       </div>
       <div class="rsvp-form" id="rsvpForm">
-        <label class="rsvp-label">Family Representative: <span class="required">*</span></label>
+        <label class="rsvp-label">Name: <span class="required">*</span></label>
         <input class="rsvp-input" type="text" id="rsvpName" />
-        <label class="rsvp-label">Number of Guests: <span class="required">*</span></label>
-        <input class="rsvp-input" type="number" id="rsvpGuests" min="1" />
         <label class="rsvp-label">Email: <span class="required">*</span></label>
         <input class="rsvp-input" type="email" id="rsvpEmail" />
         <label class="rsvp-label">Phone Number: <span class="required">*</span></label>
@@ -1812,12 +1866,11 @@
 
   async function submitRsvp() {
     const name    = document.getElementById('rsvpName').value.trim();
-    const guests  = document.getElementById('rsvpGuests').value.trim();
     const email   = document.getElementById('rsvpEmail').value.trim();
     const phone   = document.getElementById('rsvpPhone').value.trim();
     const attend  = document.querySelector('input[name="attend"]:checked');
 
-    if (!name || !guests || !email || !phone || !attend) {
+    if (!name || !email || !phone || !attend) {
       alert('Pakiusap punan ang lahat ng required na fields.');
       return;
     }
@@ -1829,7 +1882,6 @@
     const params = new URLSearchParams({
       callback:  'rsvpCallback',
       name:      name,
-      guests:    guests,
       email:     email,
       phone:     phone,
       attending: attend.value === 'yes' ? 'Yes' : 'No'
@@ -1876,6 +1928,10 @@
     document.body.style.overflow = 'hidden';
     flipResetPage();
     flipUpdateCounter();
+    // Preload next few images
+    flipPreloadImage(galleryImages[idx]);
+    if (idx + 1 < galleryImages.length) flipPreloadImage(galleryImages[idx + 1]);
+    if (idx + 2 < galleryImages.length) flipPreloadImage(galleryImages[idx + 2]);
   }
 
   function closeFlipbook() {
@@ -1910,16 +1966,21 @@
     void flipPageImg.offsetWidth; // force reflow so the next transition is clean
   }
 
+  let flipImageCache = {};
+
   function flipPreloadImage(src) {
+    if (flipImageCache[src]) return Promise.resolve();
     return new Promise((resolve) => {
       const img = new Image();
-      img.onload = resolve;
-      img.onerror = resolve;
+      const timeout = setTimeout(resolve, 2000);
+      img.onload = () => { clearTimeout(timeout); flipImageCache[src] = true; resolve(); };
+      img.onerror = () => { clearTimeout(timeout); flipImageCache[src] = true; resolve(); };
       img.src = src;
     });
   }
 
   function flipPrepareDrag(direction, target) {
+    flipPreloadImage(galleryImages[target]);
     flipBaseImg.src = galleryImages[target];
     flipPageImg.src = galleryImages[target];
     flipPageImg.style.transition = 'none';
