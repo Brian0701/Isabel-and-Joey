@@ -1876,14 +1876,7 @@
     document.body.style.overflow = 'hidden';
     flipResetPage();
     flipUpdateCounter();
-    // Preload next few images
-    flipPreloadImage(galleryImages[idx]);
-    if (idx + 1 < galleryImages.length) flipPreloadImage(galleryImages[idx + 1]);
-    if (idx + 2 < galleryImages.length) flipPreloadImage(galleryImages[idx + 2]);
   }
-
-  // Preload all gallery images upfront
-  galleryImages.forEach(img => flipPreloadImage(img));
 
   function closeFlipbook() {
     flipModal.classList.remove('open');
@@ -1905,6 +1898,10 @@
     flipCounter.textContent = (flipCurrent + 1) + ' / ' + galleryImages.length;
     flipPrevBtn.disabled = flipCurrent === 0;
     flipNextBtn.disabled = flipCurrent === galleryImages.length - 1;
+    // Preload next 3 images when viewing changes
+    if (flipCurrent + 1 < galleryImages.length) flipPreloadImage(galleryImages[flipCurrent + 1]);
+    if (flipCurrent + 2 < galleryImages.length) flipPreloadImage(galleryImages[flipCurrent + 2]);
+    if (flipCurrent + 3 < galleryImages.length) flipPreloadImage(galleryImages[flipCurrent + 3]);
   }
 
   function flipResetPage() {
