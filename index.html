@@ -1898,10 +1898,6 @@
     flipCounter.textContent = (flipCurrent + 1) + ' / ' + galleryImages.length;
     flipPrevBtn.disabled = flipCurrent === 0;
     flipNextBtn.disabled = flipCurrent === galleryImages.length - 1;
-    // Preload next 3 images when viewing changes
-    if (flipCurrent + 1 < galleryImages.length) flipPreloadImage(galleryImages[flipCurrent + 1]);
-    if (flipCurrent + 2 < galleryImages.length) flipPreloadImage(galleryImages[flipCurrent + 2]);
-    if (flipCurrent + 3 < galleryImages.length) flipPreloadImage(galleryImages[flipCurrent + 3]);
   }
 
   function flipResetPage() {
@@ -1914,34 +1910,16 @@
     void flipPageImg.offsetWidth; // force reflow so the next transition is clean
   }
 
-  let flipImageCache = {};
-
-  function flipWaitForImageToLoad(imgElement, src) {
-    return new Promise((resolve) => {
-      if (imgElement.src === src && imgElement.complete) {
-        resolve();
-        return;
-      }
-      const timeout = setTimeout(resolve, 1500);
-      const onLoad = () => { clearTimeout(timeout); imgElement.removeEventListener('load', onLoad); resolve(); };
-      imgElement.addEventListener('load', onLoad);
-      imgElement.src = src;
-    });
-  }
-
   function flipPreloadImage(src) {
-    if (flipImageCache[src]) return Promise.resolve();
     return new Promise((resolve) => {
       const img = new Image();
-      const timeout = setTimeout(() => { flipImageCache[src] = true; resolve(); }, 1500);
-      img.onload = () => { clearTimeout(timeout); flipImageCache[src] = true; resolve(); };
-      img.onerror = () => { clearTimeout(timeout); flipImageCache[src] = true; resolve(); };
+      img.onload = resolve;
+      img.onerror = resolve;
       img.src = src;
     });
   }
 
   function flipPrepareDrag(direction, target) {
-    flipPreloadImage(galleryImages[target]);
     flipBaseImg.src = galleryImages[target];
     flipPageImg.src = galleryImages[target];
     flipPageImg.style.transition = 'none';
@@ -1995,8 +1973,7 @@
     flipAnimating = true;
 
     if (angle > 60) {
-      flipWaitForImageToLoad(flipPageImg, galleryImages[target]).then(() => {
-        flipBaseImg.src = galleryImages[target];
+      flipPreloadImage(galleryImages[target]).then(() => {
         flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
         flipPageImg.style.transform = 'rotateY(' + (dir === 'next' ? -180 : 180) + 'deg)';
         flipPageImg.style.filter = 'brightness(1)';
@@ -2028,8 +2005,8 @@
     if (target < 0 || target >= galleryImages.length) return;
 
     flipAnimating = true;
-    flipWaitForImageToLoad(flipPageImg, galleryImages[target]).then(() => {
-      flipBaseImg.src = galleryImages[target];
+    flipPreloadImage(galleryImages[target]).then(() => {
+      flipPrepareDrag(direction, target);
       flipPageImg.style.transition = 'transform 0.45s cubic-bezier(.2,.7,.3,1)';
       requestAnimationFrame(function () {
         flipPageImg.style.transform = 'rotateY(' + (direction === 'next' ? -180 : 180) + 'deg)';
