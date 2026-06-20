@@ -1878,6 +1878,24 @@
     flipUpdateCounter();
   }
 
+  // Preload all images in batches after page loads
+  window.addEventListener('load', () => {
+    let idx = 0;
+    const preloadBatch = () => {
+      for (let i = 0; i < 3 && idx < galleryImages.length; i++, idx++) {
+        flipPreloadImage(galleryImages[idx]);
+      }
+      if (idx < galleryImages.length) {
+        if (window.requestIdleCallback) {
+          requestIdleCallback(preloadBatch, { timeout: 500 });
+        } else {
+          setTimeout(preloadBatch, 100);
+        }
+      }
+    };
+    preloadBatch();
+  });
+
   function closeFlipbook() {
     flipModal.classList.remove('open');
     document.body.style.overflow = '';
@@ -1916,26 +1934,12 @@
 
   let flipImageCache = {};
 
-  function flipWaitForImageToLoad(imgElement, src) {
-    return new Promise((resolve) => {
-      if (imgElement.src === src && imgElement.complete) {
-        resolve();
-        return;
-      }
-      const timeout = setTimeout(resolve, 1500);
-      const onLoad = () => { clearTimeout(timeout); imgElement.removeEventListener('load', onLoad); resolve(); };
-      imgElement.addEventListener('load', onLoad);
-      imgElement.src = src;
-    });
-  }
-
   function flipPreloadImage(src) {
     if (flipImageCache[src]) return Promise.resolve();
     return new Promise((resolve) => {
       const img = new Image();
-      const timeout = setTimeout(() => { flipImageCache[src] = true; resolve(); }, 1500);
-      img.onload = () => { clearTimeout(timeout); flipImageCache[src] = true; resolve(); };
-      img.onerror = () => { clearTimeout(timeout); flipImageCache[src] = true; resolve(); };
+      img.onload = () => { flipImageCache[src] = true; resolve(); };
+      img.onerror = () => { flipImageCache[src] = true; resolve(); };
       img.src = src;
     });
   }
@@ -1995,19 +1999,18 @@
     flipAnimating = true;
 
     if (angle > 60) {
-      flipWaitForImageToLoad(flipPageImg, galleryImages[target]).then(() => {
-        flipBaseImg.src = galleryImages[target];
-        flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
-        flipPageImg.style.transform = 'rotateY(' + (dir === 'next' ? -180 : 180) + 'deg)';
-        flipPageImg.style.filter = 'brightness(1)';
-        flipPageImg.addEventListener('transitionend', function handler() {
-          flipPageImg.removeEventListener('transitionend', handler);
-          flipCurrent = target;
-          flipUpdateCounter();
-          flipResetPage();
-          flipAnimating = false;
-        }, { once: true });
-      });
+      flipBaseImg.src = galleryImages[target];
+      flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
+      flipPageImg.style.transform = 'rotateY(' + (dir === 'next' ? -180 : 180) + 'deg)';
+      flipPageImg.style.filter = 'brightness(1)';
+      flipPreloadImage(galleryImages[target]);
+      flipPageImg.addEventListener('transitionend', function handler() {
+        flipPageImg.removeEventListener('transitionend', handler);
+        flipCurrent = target;
+        flipUpdateCounter();
+        flipResetPage();
+        flipAnimating = false;
+      }, { once: true });
     } else {
       flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
       flipPageImg.style.transform = 'rotateY(0deg)';
@@ -2028,20 +2031,20 @@
     if (target < 0 || target >= galleryImages.length) return;
 
     flipAnimating = true;
-    flipWaitForImageToLoad(flipPageImg, galleryImages[target]).then(() => {
-      flipBaseImg.src = galleryImages[target];
-      flipPageImg.style.transition = 'transform 0.45s cubic-bezier(.2,.7,.3,1)';
-      requestAnimationFrame(function () {
-        flipPageImg.style.transform = 'rotateY(' + (direction === 'next' ? -180 : 180) + 'deg)';
-      });
-      flipPageImg.addEventListener('transitionend', function handler() {
-        flipPageImg.removeEventListener('transitionend', handler);
-        flipCurrent = target;
-        flipUpdateCounter();
-        flipResetPage();
-        flipAnimating = false;
-      }, { once: true });
+    flipBaseImg.src = galleryImages[target];
+    flipPageImg.src = galleryImages[target];
+    flipPageImg.style.transition = 'transform 0.45s cubic-bezier(.2,.7,.3,1)';
+    flipPreloadImage(galleryImages[target]);
+    requestAnimationFrame(function () {
+      flipPageImg.style.transform = 'rotateY(' + (direction === 'next' ? -180 : 180) + 'deg)';
     });
+    flipPageImg.addEventListener('transitionend', function handler() {
+      flipPageImg.removeEventListener('transitionend', handler);
+      flipCurrent = target;
+      flipUpdateCounter();
+      flipResetPage();
+      flipAnimating = false;
+    }, { once: true });
   }
   </script>
 </body>
