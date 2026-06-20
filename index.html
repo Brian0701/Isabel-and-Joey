@@ -898,6 +898,27 @@
     }
     .flipbook-nav-btn:hover { background: rgba(245,234,214,0.18); }
     .flipbook-nav-btn:disabled { opacity: 0.25; cursor: default; }
+    .flipbook-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(20,12,6,0.5);
+      border-radius: 6px;
+      z-index: 10;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(245,234,214,0.2);
+      border-top-color: #f5ead6;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
     .flipbook-hint {
       margin-top: 18px;
       font-size: 11px;
@@ -1445,6 +1466,9 @@
         <div class="flipbook-stage" id="flipStage">
           <img class="flip-img" id="flipBase" src="" alt="">
           <img class="flip-img" id="flipPage" src="" alt="">
+          <div class="flipbook-loading" id="flipbookLoading" style="display:none;">
+            <div class="spinner"></div>
+          </div>
         </div>
         <button type="button" class="flipbook-nav-btn" id="flipNextBtn" onclick="flipTo('next')" aria-label="Next">&#8250;</button>
       </div>
@@ -1875,6 +1899,7 @@
   const flipCounter = document.getElementById('flipbook-counter');
   const flipPrevBtn = document.getElementById('flipPrevBtn');
   const flipNextBtn = document.getElementById('flipNextBtn');
+  const flipbookLoading = document.getElementById('flipbookLoading');
 
   function openFlipbook(idx) {
     flipCurrent = idx;
@@ -1882,6 +1907,7 @@
     document.body.style.overflow = 'hidden';
     flipResetPage();
     flipUpdateCounter();
+    flipbookLoading.style.display = 'none';
   }
 
   // Aggressive preload all images starting early
@@ -2005,6 +2031,7 @@
     flipAnimating = true;
 
     if (angle > 60) {
+      flipbookLoading.style.display = 'flex';
       flipBaseImg.src = galleryImages[target];
       flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
       flipPageImg.style.transform = 'rotateY(' + (dir === 'next' ? -180 : 180) + 'deg)';
@@ -2012,6 +2039,7 @@
       flipPreloadImage(galleryImages[target]);
       flipPageImg.addEventListener('transitionend', function handler() {
         flipPageImg.removeEventListener('transitionend', handler);
+        flipbookLoading.style.display = 'none';
         flipCurrent = target;
         flipUpdateCounter();
         flipResetPage();
@@ -2037,20 +2065,38 @@
     if (target < 0 || target >= galleryImages.length) return;
 
     flipAnimating = true;
+    flipbookLoading.style.display = 'flex';
+    
+    const loadPromise = new Promise((resolve) => {
+      const checkLoad = () => {
+        if (flipPageImg.complete && flipPageImg.naturalHeight !== 0) {
+          resolve();
+        } else {
+          flipPageImg.onload = resolve;
+          flipPageImg.onerror = resolve;
+        }
+      };
+      setTimeout(checkLoad, 50);
+    });
+
     flipBaseImg.src = galleryImages[target];
     flipPageImg.src = galleryImages[target];
     flipPageImg.style.transition = 'transform 0.45s cubic-bezier(.2,.7,.3,1)';
     flipPreloadImage(galleryImages[target]);
-    requestAnimationFrame(function () {
-      flipPageImg.style.transform = 'rotateY(' + (direction === 'next' ? -180 : 180) + 'deg)';
+    
+    loadPromise.then(() => {
+      flipbookLoading.style.display = 'none';
+      requestAnimationFrame(function () {
+        flipPageImg.style.transform = 'rotateY(' + (direction === 'next' ? -180 : 180) + 'deg)';
+      });
+      flipPageImg.addEventListener('transitionend', function handler() {
+        flipPageImg.removeEventListener('transitionend', handler);
+        flipCurrent = target;
+        flipUpdateCounter();
+        flipResetPage();
+        flipAnimating = false;
+      }, { once: true });
     });
-    flipPageImg.addEventListener('transitionend', function handler() {
-      flipPageImg.removeEventListener('transitionend', handler);
-      flipCurrent = target;
-      flipUpdateCounter();
-      flipResetPage();
-      flipAnimating = false;
-    }, { once: true });
   }
   </script>
 </body>
