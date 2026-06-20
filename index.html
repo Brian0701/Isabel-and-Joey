@@ -1910,8 +1910,18 @@
     void flipPageImg.offsetWidth; // force reflow so the next transition is clean
   }
 
+  function flipPreloadImage(src) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = resolve;
+      img.onerror = resolve;
+      img.src = src;
+    });
+  }
+
   function flipPrepareDrag(direction, target) {
     flipBaseImg.src = galleryImages[target];
+    flipPageImg.src = galleryImages[target];
     flipPageImg.style.transition = 'none';
     flipPageImg.style.transformOrigin = direction === 'next' ? 'left center' : 'right center';
     flipPageImg.dataset.dir = direction;
@@ -1961,19 +1971,22 @@
     const angle = match ? Math.abs(parseFloat(match[1])) : 0;
     flipDragDir = null;
     flipAnimating = true;
-    flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
 
     if (angle > 60) {
-      flipPageImg.style.transform = 'rotateY(' + (dir === 'next' ? -180 : 180) + 'deg)';
-      flipPageImg.style.filter = 'brightness(1)';
-      flipPageImg.addEventListener('transitionend', function handler() {
-        flipPageImg.removeEventListener('transitionend', handler);
-        flipCurrent = target;
-        flipUpdateCounter();
-        flipResetPage();
-        flipAnimating = false;
-      }, { once: true });
+      flipPreloadImage(galleryImages[target]).then(() => {
+        flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
+        flipPageImg.style.transform = 'rotateY(' + (dir === 'next' ? -180 : 180) + 'deg)';
+        flipPageImg.style.filter = 'brightness(1)';
+        flipPageImg.addEventListener('transitionend', function handler() {
+          flipPageImg.removeEventListener('transitionend', handler);
+          flipCurrent = target;
+          flipUpdateCounter();
+          flipResetPage();
+          flipAnimating = false;
+        }, { once: true });
+      });
     } else {
+      flipPageImg.style.transition = 'transform 0.32s cubic-bezier(.2,.7,.3,1), filter 0.32s';
       flipPageImg.style.transform = 'rotateY(0deg)';
       flipPageImg.style.filter = 'brightness(1)';
       flipPageImg.addEventListener('transitionend', function handler() {
@@ -1991,19 +2004,21 @@
     const target = direction === 'next' ? flipCurrent + 1 : flipCurrent - 1;
     if (target < 0 || target >= galleryImages.length) return;
 
-    flipPrepareDrag(direction, target);
     flipAnimating = true;
-    flipPageImg.style.transition = 'transform 0.45s cubic-bezier(.2,.7,.3,1)';
-    requestAnimationFrame(function () {
-      flipPageImg.style.transform = 'rotateY(' + (direction === 'next' ? -180 : 180) + 'deg)';
+    flipPreloadImage(galleryImages[target]).then(() => {
+      flipPrepareDrag(direction, target);
+      flipPageImg.style.transition = 'transform 0.45s cubic-bezier(.2,.7,.3,1)';
+      requestAnimationFrame(function () {
+        flipPageImg.style.transform = 'rotateY(' + (direction === 'next' ? -180 : 180) + 'deg)';
+      });
+      flipPageImg.addEventListener('transitionend', function handler() {
+        flipPageImg.removeEventListener('transitionend', handler);
+        flipCurrent = target;
+        flipUpdateCounter();
+        flipResetPage();
+        flipAnimating = false;
+      }, { once: true });
     });
-    flipPageImg.addEventListener('transitionend', function handler() {
-      flipPageImg.removeEventListener('transitionend', handler);
-      flipCurrent = target;
-      flipUpdateCounter();
-      flipResetPage();
-      flipAnimating = false;
-    }, { once: true });
   }
   </script>
 </body>
