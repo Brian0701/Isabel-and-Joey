@@ -694,14 +694,10 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      cursor: pointer;
       position: relative;
-      transition: border-color 0.2s;
     }
-    .qr-photo:hover { border-color: #8b7060; }
     .qr-photo svg { opacity: 0.4; display: none; }
     .qr-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .qr-photo input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; font-size: 0; }
     .qr-bank {
       font-size: 13px;
       letter-spacing: 0.15em;
@@ -731,15 +727,11 @@
       justify-content: center;
       flex-shrink: 0;
       overflow: hidden;
-      cursor: pointer;
       position: relative;
-      transition: border-color 0.2s;
       margin-bottom: 20px;
     }
-    .party-photo:hover { border-color: #8b7060; }
     .party-photo svg { opacity: 0.4; }
-    .party-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: none; }
-    .party-photo input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; font-size: 0; }
+    .party-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
     .party-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 20px;
@@ -861,9 +853,6 @@
       .rsvp-radio-label { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5c3d2e; cursor: pointer; }
       .rsvp-radio-label input[type="radio"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #5c3d2e; }
 
-      /* Fix wedding party / QR photo upload on mobile */
-      .party-photo input[type="file"],
-      .qr-photo input[type="file"] { display: none; }
       .party-group { gap: 20px; }
     }
   </style>
@@ -1096,16 +1085,16 @@
       <div class="qr-group-label">Send a Cash Gift</div>
       <div class="qr-grid">
         <div class="qr-card">
-          <div class="qr-photo" onclick="this.querySelector('input').click()">
+          <div class="qr-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-            <img src="gcash-qr.png" alt="GCash QR code"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="gcash.jpg" alt="GCash QR code" onerror="this.style.display='none'">
           </div>
           <div class="qr-bank">GCash</div>
         </div>
         <div class="qr-card">
-          <div class="qr-photo" onclick="this.querySelector('input').click()">
+          <div class="qr-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-            <img src="bpi-qr.png" alt="BPI QR code"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="bpi.jpg" alt="BPI QR code" onerror="this.style.display='none'">
           </div>
           <div class="qr-bank">BPI</div>
         </div>
@@ -1133,17 +1122,17 @@
       <div class="party-group-label">The Couple</div>
       <div class="party-group">
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="bride.jpg" alt="Maria Isabel Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Maria Isabel Ogrimina</div>
           <div class="party-role">Bride</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="groom.jpg" alt="Joey Clemen" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Joey Clemen</div>
           <div class="party-role">Groom</div>
@@ -1153,17 +1142,17 @@
       <div class="party-group-label">Wedding Entourage</div>
       <div class="party-group">
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="matron-of-honor.jpg" alt="Freya Naglak" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Freya Naglak</div>
           <div class="party-role">Matron of Honor</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="best-man.jpg" alt="Aljun Welba" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Aljun Welba</div>
           <div class="party-role">Best Man</div>
@@ -1173,41 +1162,41 @@
       <div class="party-group-label">Bridesmaids</div>
       <div class="party-group">
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="bridesmaid-1.jpg" alt="Maria Andrea Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Maria Andrea Ogrimina</div>
           <div class="party-role">Bridesmaid</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="bridesmaid-2.jpg" alt="Maria Paula Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Maria Paula Ogrimina</div>
           <div class="party-role">Bridesmaid</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="bridesmaid-3.jpg" alt="Chriselle Joy Diaz" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Chriselle Joy Diaz</div>
           <div class="party-role">Bridesmaid</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="bridesmaid-4.jpg" alt="Suchi Taruballes" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Suchi Taruballes</div>
           <div class="party-role">Bridesmaid</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="bridesmaid-5.jpg" alt="Renilyn Dayao" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Renilyn Dayao</div>
           <div class="party-role">Bridesmaid</div>
@@ -1217,25 +1206,25 @@
       <div class="party-group-label">Little Ones</div>
       <div class="party-group">
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="flower-girl-1.jpg" alt="Isla Kiselle Taruballes" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Isla Kiselle Taruballes</div>
           <div class="party-role">Flower Girl</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="flower-girl-2.jpg" alt="Aaliyah Joelene Labrador" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Aaliyah Joelene Labrador</div>
           <div class="party-role">Flower Girl</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="ring-bearer.jpg" alt="Kristofer Clemen" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Kristofer Clemen</div>
           <div class="party-role">Ring Bearer</div>
@@ -1245,17 +1234,17 @@
       <div class="party-group-label">Parents of the Bride</div>
       <div class="party-group">
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="mother-of-bride.jpg" alt="Fredilyn Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Fredilyn Ogrimina</div>
           <div class="party-role">Mother of the Bride</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="father-of-bride.jpg" alt="Sonny Ogrimina" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Sonny Ogrimina</div>
           <div class="party-role">Father of the Bride</div>
@@ -1265,17 +1254,17 @@
       <div class="party-group-label">Parents of the Groom</div>
       <div class="party-group">
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="mother-of-groom.jpg" alt="Delia Clemen" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Delia Clemen</div>
           <div class="party-role">Mother of the Groom</div>
         </div>
         <div class="party-member">
-          <div class="party-photo" onclick="this.querySelector('input').click()">
+          <div class="party-photo">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7a6050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <img alt="photo"><input type="file" accept="image/*" onchange="previewPhoto(this)">
+            <img src="father-of-groom.jpg" alt="Ambrosio Clemen" onerror="this.style.display='none'">
           </div>
           <div class="party-name">Ambrosio Clemen</div>
           <div class="party-role">Father of the Groom</div>
@@ -1630,24 +1619,6 @@
     });
   }, { threshold: 0.4 });
   sections.forEach(s => dotObserver.observe(s));
-
-
-  /* ══════════════════════════════════════
-     PHOTO UPLOAD
-  ══════════════════════════════════════ */
-  function previewPhoto(input) {
-    if (!input.files || !input.files[0]) return;
-    const reader = new FileReader();
-    reader.onload = e => {
-      const container = input.closest('.party-photo, .qr-photo');
-      const img = container.querySelector('img');
-      const svg = container.querySelector('svg');
-      img.src = e.target.result;
-      img.style.display = 'block';
-      if (svg) svg.style.display = 'none';
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
 
 
   /* ══════════════════════════════════════
