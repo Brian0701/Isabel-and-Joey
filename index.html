@@ -1876,6 +1876,10 @@
     document.body.style.overflow = 'hidden';
     flipResetPage();
     flipUpdateCounter();
+    // Preload next few images
+    flipPreloadImage(galleryImages[idx]);
+    if (idx + 1 < galleryImages.length) flipPreloadImage(galleryImages[idx + 1]);
+    if (idx + 2 < galleryImages.length) flipPreloadImage(galleryImages[idx + 2]);
   }
 
   function closeFlipbook() {
@@ -1910,16 +1914,21 @@
     void flipPageImg.offsetWidth; // force reflow so the next transition is clean
   }
 
+  let flipImageCache = {};
+
   function flipPreloadImage(src) {
+    if (flipImageCache[src]) return Promise.resolve();
     return new Promise((resolve) => {
       const img = new Image();
-      img.onload = resolve;
-      img.onerror = resolve;
+      const timeout = setTimeout(resolve, 2000);
+      img.onload = () => { clearTimeout(timeout); flipImageCache[src] = true; resolve(); };
+      img.onerror = () => { clearTimeout(timeout); flipImageCache[src] = true; resolve(); };
       img.src = src;
     });
   }
 
   function flipPrepareDrag(direction, target) {
+    flipPreloadImage(galleryImages[target]);
     flipBaseImg.src = galleryImages[target];
     flipPageImg.src = galleryImages[target];
     flipPageImg.style.transition = 'none';
